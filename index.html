@@ -214,34 +214,50 @@ function ocvLocalDefects(ref,cur,W,H,dx,dy){
  regions.sort((a,b)=>b.score-a.score);
  return {regions,worst:regions[0]||null,usable:regions.length};
 }
-async function verifyOCV(crop,item,ocrScore,textThreshold,locScore){
- const verdict=$('ocvVerdict'),expected=normalizeOCR($('expectedText').value);
- function report(label,color){verdict.textContent=label;verdict.style.color=color}
- if(!item){report('NEJISTÉ – není vybraný obrazový vzor z banky','#ffcc75');return}
- if(ocrScore<textThreshold){report('NOK / NEJISTÉ – rozpoznaný text nesouhlasí s očekávaným','#ff8296');return}
- const img=new Image();img.src=item.data;await img.decode();const W=420,H=140,reference=ocvCanvas(img,W,H),actual=ocvCanvas(crop,W,H);
+// V21: Compare ink geometry only after registration; never classify a poorly aligned image as damage.
+function ocvSmooth(mask,W,H){const out=new Uint8Array(mask.length);for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){let n=0;for(let yy=-1;yy<=1;yy++)for(let xx=-1;xx<=1;xx++)n+=mask[(y+yy)*W+x+xx];out[y*W+x]=n>=4?1:0}return out}
+function ocvShiftedScore(ref,cur,W,H,dx,dy,tol){const refTol=ocvDilate(ref,W,H,tol),curTol=ocvDilate(cur,W,H,tol);return ocvScore(ref,cur,refTol,curTol,W,H,dx,dy)}
+function ocvCompareMasks(ref,cur,W,H){
+ // Search translation with the same geometry for both images; no per-tile independent alignment.
+ let best=null;const rt=ocvDilate(ref,W,H,2),ct=ocvDilate(cur,W,H,2);
+ for(let dy=-5;dy<=5;dy++)for(let dx=-8;dx<=8;dx++){const z=ocvScore(ref,cur,rt,ct,W,H,dx,dy);if(!best||z.cost<best.cost)best={...z,dx,dy}}
+ const local=ocvLocalDefects(ref,cur,W,H,best.dx,best.dy);
+ // Single tiles frequently contain only antialiasing or shifted stroke edges.
+ // Require spatially adjacent affected tiles rather than the largest isolated ratio.
+ const anomalous=local.regions.filter(r=>r.ink>=24&&r.score>.30);
+ const clustered=anomalous.filter(a=>anomalous.some(b=>b!==a&&Math.abs(a.x-b.x)<=21&&Math.abs(a.y-b.y)<=26));
+ return {...best,local,clusters:clustered.length,anomalies:anomalous.length};
+}
+async function ocvReferenceCompare(crop,item){
+ const img=new Image();img.src=item.data;await img.decode();
+ const W=420,H=140,reference=ocvCanvas(img,W,H),actual=ocvCanvas(crop,W,H);
  const rm=ocvMask(ocvGray(reference),W,H),am=ocvMask(ocvGray(actual),W,H),rb=ocvBounds(rm,W,H),ab=ocvBounds(am,W,H);
- if(!rb||!ab){report('NEJISTÉ – nápis nemá dostatečný kontrast','#ffcc75');return}
- const rWidth=(rb.x1-rb.x0)/W,aWidth=(ab.x1-ab.x0)/W;
- if(Math.abs(rWidth-aWidth)>.30){report('NEJISTÉ – výřezy se příliš liší','#ffcc75');return}
- const NW=320,NH=100,ref=ocvCropMask(rm,W,H,rb,NW,NH),cur=ocvCropMask(am,W,H,ab,NW,NH);
- const tolerantRef=ocvDilate(ref,NW,NH,2),tolerantCur=ocvDilate(cur,NW,NH,2);let best=null;
- for(let dy=-3;dy<=3;dy++)for(let dx=-5;dx<=5;dx++){const t=ocvScore(ref,cur,tolerantRef,tolerantCur,NW,NH,dx,dy);if(!best||t.cost<best.cost)best={...t,dx,dy}}
- if(best.refInk<200||best.curInk<150){report('NEJISTÉ – znaky jsou příliš malé nebo slabě viditelné','#ffcc75');return}
- const sensitivity=Number($('ocvSensitivity').value),limit=0.35-(sensitivity-1)*(0.34/99);
- const local=ocvLocalDefects(ref,cur,NW,NH,best.dx,best.dy);
- // A small damaged character can be diluted by the many good characters.
- // The local threshold is deliberately stricter than the whole-image threshold.
- const localLimit=Math.max(.10,Math.min(.42,limit*1.45));
- const worst=local.worst;
- const globalSuspect=best.missing>limit||best.extra>limit;
- const localSuspect=!!worst&&worst.score>localLimit;
- const strongLocal=!!worst&&worst.score>Math.max(.32,localLimit*1.35);
- $('ocvDiagnostics').textContent=`Lokalizace ${(locScore*100).toFixed(1)} % · globální chybějící ${(best.missing*100).toFixed(1)} % · globální přebytečné ${(best.extra*100).toFixed(1)} % · globální limit ${(limit*100).toFixed(1)} %\nLokální oblasti ${local.usable} · nejhorší odchylka ${worst?(worst.score*100).toFixed(1):'—'} % · lokální limit ${(localLimit*100).toFixed(1)} %`;
- if(local.usable<5){report('NEJISTÉ – málo čitelných oblastí pro kontrolu jednotlivých znaků','#ffcc75');return}
- if(globalSuspect||strongLocal){report('NOK – podezření na chybějící nebo přerušené tahy','#ff8296');return}
- if(localSuspect){report('NEJISTÉ – lokální odchylka, nelze potvrdit nepoškozené znaky','#ffcc75');return}
- report('PŘEDBĚŽNĚ OK – obsah a lokální obrazová kontrola bez zjištěné vady (nutná validace)','#8ff0b4');
+ if(!rb||!ab)return {valid:false,reason:'nedostatečný kontrast'};
+ // Reject differently cropped references before normalizing; otherwise dates/background are stretched into glyphs.
+ const rr=(rb.x1-rb.x0+1)/(rb.y1-rb.y0+1),ar=(ab.x1-ab.x0+1)/(ab.y1-ab.y0+1);
+ if(Math.abs(Math.log(rr/ar))>.30)return {valid:false,reason:'odlišný poměr stran znaků'};
+ const NW=320,NH=100,ref=ocvSmooth(ocvCropMask(rm,W,H,rb,NW,NH),NW,NH),cur=ocvSmooth(ocvCropMask(am,W,H,ab,NW,NH),NW,NH);
+ const m=ocvCompareMasks(ref,cur,NW,NH);
+ if(m.refInk<200||m.curInk<150||m.local.usable<5)return {valid:false,reason:'málo čitelných tahů'};
+ return {valid:true,...m};
+}
+async function verifyOCV(crop,item,ocrScore,textThreshold,locScore,otherMatches=[]){
+ const verdict=$('ocvVerdict');function report(label,color){verdict.textContent=label;verdict.style.color=color}
+ if(ocrScore<textThreshold){report('NOK – rozpoznaný text neodpovídá zadání','#ff8296');return}
+ if(!item){report('NEJISTÉ – chybí referenční vzor','#ffcc75');return}
+ const sensitivity=Number($('ocvSensitivity').value),limit=.35-(sensitivity-1)*(.34/99);
+ const all=[{item,score:locScore},...otherMatches].slice(0,4),results=[];
+ for(const candidate of all){try{const result=await ocvReferenceCompare(crop,candidate.item);results.push({...result,name:candidate.item.name,loc:candidate.score})}catch(e){results.push({valid:false,name:candidate.item.name,reason:e.message})}await new Promise(resolve=>setTimeout(resolve,0))}
+ const valid=results.filter(r=>r.valid).sort((a,b)=>a.cost-b.cost);
+ if(!valid.length){$('ocvDiagnostics').textContent=results.map(r=>r.name+': '+r.reason).join('\n');report('NEJISTÉ – referenční fotografie nelze geometricky porovnat','#ffcc75');return}
+ const best=valid[0],global=Math.max(best.missing,best.extra),worst=best.local.worst;
+ $('ocvDiagnostics').textContent=`Použitý vzor: ${best.name} · reference ${valid.length}/${all.length}\nChybějící ${(best.missing*100).toFixed(1)} % · přebytečné ${(best.extra*100).toFixed(1)} % · obrazová cena ${(best.cost*100).toFixed(1)} %\nLokální oblasti ${best.local.usable} · nejhorší oblast ${worst?(worst.score*100).toFixed(1):'—'} % · sousedící podezřelé oblasti ${best.clusters}\nPosun registrace ${best.dx}, ${best.dy} px · citlivost ${sensitivity} % · referenční limit ${(limit*100).toFixed(1)} %\n`+results.map(r=>r.name+': '+(r.valid?(r.cost*100).toFixed(1)+' %':'nelze porovnat ('+r.reason+')')).join(' · ');
+ // High global difference means comparison is unreliable, NOT proof of damaged ink.
+ // Low global difference plus a cluster of local defects warrants suspicion, not automatic rejection.
+ if(global>.16||best.cost>.12){report('NEJISTÉ – velký rozdíl snímků; nelze rozhodnout o poškození','#ffcc75');return}
+ if(best.clusters>=2&&global>.055){report('NEJISTÉ – podezřelé souvislé poškození tahů; nutná kontrola','#ffcc75');return}
+ if(best.cost>.065||global>.10){report('NEJISTÉ – rozdíly tahů přesahují spolehlivost porovnání','#ffcc75');return}
+ report('PŘEDBĚŽNĚ OK – OCR souhlasí a porovnání nevykazuje průkaznou vadu (nevalidováno)','#8ff0b4');
 }
 
 async function evaluateOCR(){let worker;const epoch=frameEpoch;clearVisualResults();try{
@@ -249,7 +265,7 @@ async function evaluateOCR(){let worker;const epoch=frameEpoch;clearVisualResult
  await bankReady;const candidates=selectedOCVPattern()?[selectedOCVPattern()]:activePatterns();if(!candidates.length)throw Error('Aktivní banka je prázdná. V panelu Vzory přidej alespoň jednu referenční fotografii.');
  $('ocrPanel').classList.add('open');$('ocrProgress').textContent='Hledám referenční značení na snímku…';
  await new Promise(resolve=>setTimeout(resolve,0));
- let found=null,item=null;for(let i=0;i<candidates.length;i++){if(epoch!==frameEpoch)return;$('ocrProgress').textContent='Hledám vzory v bance '+(i+1)+'/'+candidates.length+'…';await new Promise(resolve=>setTimeout(resolve,0));const f=await locateOCVPattern(candidates[i]);if(f&&(!found||f.score>found.score)){found=f;item=candidates[i]}}if(epoch!==frameEpoch)return;
+ let found=null,item=null;const located=[];for(let i=0;i<candidates.length;i++){if(epoch!==frameEpoch)return;$('ocrProgress').textContent='Hledám vzory v bance '+(i+1)+'/'+candidates.length+'…';await new Promise(resolve=>setTimeout(resolve,0));const f=await locateOCVPattern(candidates[i]);if(f)located.push({item:candidates[i],score:f.score,box:f});if(f&&(!found||f.score>found.score)){found=f;item=candidates[i]}}if(epoch!==frameEpoch)return;
  const locateLimit=Number($('ocvLocate').value)/100;
  if(!found||found.score<locateLimit){$('ocvVerdict').textContent='NEJISTÉ – referenční nápis nebyl dostatečně spolehlivě nalezen';$('ocvVerdict').style.color='#ffcc75';$('ocrProgress').textContent='Lokalizace: '+(found?(found.score*100).toFixed(1):'0')+' % (minimum '+$('ocvLocate').value+' %)';statusEl.textContent='Nápis nenalezen – NEJISTÉ';return}
  const z={x:Math.max(0,Math.round(found.x)),y:Math.max(0,Math.round(found.y)),w:Math.round(Math.min(found.w,frozenCanvas.width-found.x)),h:Math.round(Math.min(found.h,frozenCanvas.height-found.y))};
@@ -270,7 +286,7 @@ async function evaluateOCR(){let worker;const epoch=frameEpoch;clearVisualResult
  const {best,kind}=winner,score=Math.round(best.score*100),threshold=Number($('ocrThreshold').value);
  $('ocrResult').textContent=best.value||'(Žádný text nerozpoznán)';$('ocrDiff').innerHTML=ocrDiffMarkup(expected,best.value);
  $('ocrProgress').textContent=`Vzor ${item.name} · lokalizace ${(found.score*100).toFixed(1)} % · OCR ${score} % · úprava ${kind}`;
- await verifyOCV(canvas,item,score,threshold,found.score);
+ await verifyOCV(canvas,item,score,threshold,found.score,located.filter(z=>z.item!==item&&z.score>=Number($('ocvLocate').value)/100).sort((a,b)=>b.score-a.score).slice(0,3));
  statusEl.textContent=`Značení: ${best.value||'nic'} · OCR ${score} % · ${$('ocvVerdict').textContent.split(' – ')[0]}`;
  }catch(e){statusEl.textContent='Chyba kontroly značení: '+e.message;$('ocrProgress').textContent=e.message;$('ocvVerdict').textContent='NEJISTÉ – '+e.message}
  finally{if(worker)await worker.terminate().catch(()=>{});busy=false;analysisDone=true}
