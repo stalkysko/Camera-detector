@@ -1,9 +1,9 @@
-<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#111827"><title>Part Detector V23.11</title><link rel="manifest" href="manifest.webmanifest"><style>
-*{box-sizing:border-box}html,body{margin:0;height:100%;background:#05070a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}#stage{position:fixed;inset:0}video,canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}video{background:#000}canvas{pointer-events:none}.bar{position:fixed;left:0;right:0;top:0;padding:calc(8px + env(safe-area-inset-top)) 8px 8px;background:linear-gradient(#000e,#0000);display:flex;gap:6px;align-items:center;z-index:4;flex-wrap:wrap}.bar button,.bar select{font-size:14px;border:0;border-radius:10px;padding:10px 11px;min-height:42px}.bar button{font-weight:700}.status{font-size:12px;opacity:.95;flex:1;min-width:130px}.panel{position:fixed;z-index:5;top:calc(112px + env(safe-area-inset-top));right:8px;width:min(360px,calc(100% - 16px));max-height:68%;overflow:auto;background:#111e;border:1px solid #ffffff22;border-radius:14px;padding:12px;backdrop-filter:blur(10px);display:none}.panel.open{display:block}.panel h3{margin:0 0 8px;font-size:16px}.row{display:grid;grid-template-columns:1fr 72px;gap:8px;align-items:center;margin:8px 0}.row label{font-size:12px}.row input[type=range]{grid-column:1/3;width:100%}.val{text-align:right;font:12px ui-monospace,monospace}.checks{display:grid;gap:7px;margin-top:10px;font-size:12px}.checks label{display:flex;gap:8px;align-items:center}.panel .actions{display:flex;gap:7px;margin-top:10px}.panel button{border:0;border-radius:9px;padding:9px 10px;font-weight:650}.bottom{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));z-index:3;background:#000b;border-radius:12px;padding:8px 10px;font-size:12px;line-height:1.35;backdrop-filter:blur(8px)}
+<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#111827"><title>Part Detector V23.14</title><link rel="manifest" href="manifest.webmanifest"><style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:#05070a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}#stage{position:fixed;inset:0;background:#000}#liveViewport{position:absolute;inset:0;overflow:hidden;pointer-events:none}video,canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}video{background:#000}canvas{pointer-events:none}.bar{position:fixed;left:0;right:0;top:0;padding:calc(8px + env(safe-area-inset-top)) 8px 8px;background:linear-gradient(#000e,#0000);display:flex;gap:6px;align-items:center;z-index:4;flex-wrap:wrap}.bar button,.bar select{font-size:14px;border:0;border-radius:10px;padding:10px 11px;min-height:42px}.bar button{font-weight:700}.status{font-size:12px;opacity:.95;flex:1;min-width:130px}.panel{position:fixed;z-index:5;top:calc(112px + env(safe-area-inset-top));right:8px;width:min(360px,calc(100% - 16px));max-height:68%;overflow:auto;background:#111e;border:1px solid #ffffff22;border-radius:14px;padding:12px;backdrop-filter:blur(10px);display:none}.panel.open{display:block}.panel h3{margin:0 0 8px;font-size:16px}.row{display:grid;grid-template-columns:1fr 72px;gap:8px;align-items:center;margin:8px 0}.row label{font-size:12px}.row input[type=range]{grid-column:1/3;width:100%}.val{text-align:right;font:12px ui-monospace,monospace}.checks{display:grid;gap:7px;margin-top:10px;font-size:12px}.checks label{display:flex;gap:8px;align-items:center}.panel .actions{display:flex;gap:7px;margin-top:10px}.panel button{border:0;border-radius:9px;padding:9px 10px;font-weight:650}.bottom{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));z-index:3;background:#000b;border-radius:12px;padding:8px 10px;font-size:12px;line-height:1.35;backdrop-filter:blur(8px)}
 
 /* V14: sjednocený vzhled, skryté banky a velké dotykové plochy */
 .bar{gap:7px;background:linear-gradient(#07111ff5,#07111fd9 78%,#07111f00);padding-bottom:15px}.bar button,.bar select{background:#1e293b;color:#eaf2ff;border:1px solid #40526b;border-radius:12px;box-shadow:0 2px 8px #0003}.bar #evaluate{background:#128464!important;border-color:#38d6a2}.bar button:active{transform:scale(.98)}.panel{background:#0d1727f5;border:1px solid #34465f;box-shadow:0 14px 40px #0008;border-radius:18px;line-height:1.5}.panel h3{font-size:17px}.panel p,.panel small{color:#bdcbe0;font-size:12px}.panel button{background:#26364b;color:#f1f6ff;border:1px solid #445872;min-height:39px}.panel input[type=range]{accent-color:#3ed5a5}.panel textarea,.panel select{background:#0b1423;color:#fff;border:1px solid #526780;border-radius:9px;padding:10px;font-size:16px}.section{padding:11px;background:#152339;border-radius:12px;margin:10px 0}.bankFold{margin-top:12px;border:1px solid #40526b;border-radius:12px;overflow:hidden}.bankFold summary{padding:13px;cursor:pointer;font-weight:700;background:#192a40;list-style:none}.bankFold summary::-webkit-details-marker{display:none}.bankFold summary:before{content:'▸ ';color:#7be3c3}.bankFold[open] summary:before{content:'▾ '}.bankFold #roiInfo,.bankFold #bankList{margin:10px}.bankFold .danger{margin:0 10px 12px;background:#632e36}.bottom{border:1px solid #ffffff20}#ocrResult{max-height:180px;overflow:auto}
-.markingSummary{border:1px solid #425870;background:#111d2e;border-radius:13px;padding:12px;margin:12px 0}.markingMetric{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 0 5px;font-size:14px}.markingMetric strong{font-size:25px;font-variant-numeric:tabular-nums}.markingMeter{height:7px;border-radius:8px;background:#304158;overflow:hidden}.markingMeter i{display:block;height:100%;width:0;background:#38cc94;transition:width .18s}.markingSummary small{display:block;margin-top:9px;line-height:1.4}.ocrCharacters{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}.ocrChar{min-width:34px;padding:5px;border:1px solid #47566b;border-radius:6px;text-align:center;font-size:12px}.ocrChar b{display:block;font-size:17px}.ocrChar small{margin:0!important;font-size:10px}.ocrChar.pass{background:#14352d}.ocrChar.fail{background:#4d242b}.ocrChar.warn{background:#56451f}.ocrChar.na{background:#253145}.ocrChar.ocvHigh{background:#14352d}.ocrChar.ocvMid{background:#59451e}.ocrChar.ocvLow{background:#4d242b}</style></head><body><div id="stage"><video id="v" playsinline muted></video><canvas id="frozenView" style="display:none"></canvas><canvas id="o"></canvas></div><div class="bar"><select id="uiLang" aria-label="Language"><option value="cs">🇨🇿 Čeština</option><option value="en">🇬🇧 English</option></select><button id="start">Spustit kameru</button><button id="freeze">❄️ Zmrazit</button><button id="evaluate" style="background:#2b936b;color:white;font-weight:bold">🔎 VYHODNOTIT</button><button id="shot">📸 Snímek</button><button id="torch" disabled>💡 Světlo</button><button id="tune">Ladění</button><button id="patterns">🧩 Vzory</button><button id="ocrOpen">🔤 Značení</button><select id="method"><option value="classic">Kotouč + 4 díry</option><option value="roi">Hledání oblasti (vzor)</option><option value="ocr">Kontrola značení (OCV)</option></select><select id="cam"><option value="environment">Zadní kamera</option><option value="user">Přední kamera</option></select><span class="status" id="status">Připraveno. Spusť kameru.</span></div>
+.markingSummary{border:1px solid #425870;background:#111d2e;border-radius:13px;padding:12px;margin:12px 0}.markingMetric{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 0 5px;font-size:14px}.markingMetric strong{font-size:25px;font-variant-numeric:tabular-nums}.markingMeter{height:7px;border-radius:8px;background:#304158;overflow:hidden}.markingMeter i{display:block;height:100%;width:0;background:#38cc94;transition:width .18s}.markingSummary small{display:block;margin-top:9px;line-height:1.4}.ocrCharacters{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}.ocrChar{min-width:34px;padding:5px;border:1px solid #47566b;border-radius:6px;text-align:center;font-size:12px}.ocrChar b{display:block;font-size:17px}.ocrChar small{margin:0!important;font-size:10px}.ocrChar.pass{background:#14352d}.ocrChar.fail{background:#4d242b}.ocrChar.warn{background:#56451f}.ocrChar.na{background:#253145}.ocrChar.ocvHigh{background:#14352d}.ocrChar.ocvMid{background:#59451e}.ocrChar.ocvLow{background:#4d242b}</style></head><body><div id="stage"><div id="liveViewport"><video id="v" playsinline muted></video></div><canvas id="frozenView" style="display:none"></canvas><canvas id="o"></canvas></div><div class="bar"><select id="uiLang" aria-label="Language"><option value="cs">🇨🇿 Čeština</option><option value="en">🇬🇧 English</option></select><button id="start">Spustit kameru</button><button id="freeze">❄️ Zmrazit</button><button id="evaluate" style="background:#2b936b;color:white;font-weight:bold">🔎 VYHODNOTIT</button><button id="shot">📸 Snímek</button><button id="torch" disabled>💡 Světlo</button><button id="cameraZoom" type="button" disabled title="Přiblížení kamery 1× nebo 2×" aria-label="Přiblížení kamery" aria-pressed="false">🔍 1×</button><button id="tune">Ladění</button><button id="patterns">🧩 Vzory</button><button id="ocrOpen">🔤 Značení</button><select id="method"><option value="classic">Kotouč + 4 díry</option><option value="roi">Hledání oblasti (vzor)</option><option value="ocr">Kontrola značení (OCV)</option></select><select id="cam"><option value="environment">Zadní kamera</option><option value="user">Přední kamera</option></select><span class="status" id="status">Připraveno. Spusť kameru.</span></div>
 <div class="panel" id="panel"><h3>V15 • Asistované ladění</h3>
 <div id="diag" style="background:#071018;border:1px solid #ffffff22;border-radius:10px;padding:9px;margin-bottom:10px;font-size:12px;line-height:1.5">
 <div><b>① DÍL</b> <span id="dPart">čekám</span></div><div><b>② 4 DÍRY</b> <span id="dHoles">čekám</span></div><div><b>③ ATYPICKÁ</b> <span id="dRing">čekám</span></div><div><b>④ VÝSLEDEK</b> <span id="dLock">čekám</span></div><div id="advice" style="margin-top:6px;color:#ffe05b">Spusť kameru a pro snadné ladění zmraz jeden referenční díl.</div></div>
@@ -18,7 +18,7 @@
 <div class="row"><label>Framů pro AUTO FREEZE</label><span class="val" id="vLock"></span><input id="lockFrames" type="range" min="2" max="15" step="1"></div>
 <div class="row"><label>Tolerance směru atypické díry</label><span class="val" id="vAngle"></span><input id="angleTol" type="range" min="10" max="44" step="1"></div>
 <div class="checks"><label><input id="dbgParts" type="checkbox"> RAW kandidáti obvodu</label><label><input id="dbgHoles" type="checkbox"> nalezené otvory</label><label><input id="dbgRings" type="checkbox"> kandidáti mezikruží</label></div><div class="actions"><button id="defaults">Výchozí</button><button id="closePanel">Zavřít</button></div></div>
-<div class="panel" id="patternPanel" style="left:8px;right:auto;top:calc(110px + env(safe-area-inset-top));max-height:72%;overflow:auto"><h3>🧩 Vzory a porovnávání</h3><div class="section"><b>Minimální podobnost obrazového vzoru</b><div class="row"><label>Práh shody</label><span id="roiThresholdValue">75 %</span><input id="roiThreshold" type="range" min="40" max="95" value="75"></div><small>Čím vyšší práh, tím přísnější výběr. Nejde o statistickou jistotu.</small></div><div class="section"><label for="activeBank">Aktivní banka vzorů</label><div class="row"><select id="activeBank" style="flex:1;min-width:120px"></select><button id="addBank">＋ Nová banka</button><button id="renameBank">Přejmenovat</button></div><div id="bankCreateBox" style="display:none;margin-top:10px"><label for="newBankName">Název nové banky</label><div class="row"><input id="newBankName" type="text" placeholder="Např. Štítky" style="min-width:0;flex:1;padding:10px;background:#0b1423;color:white;border:1px solid #526780;border-radius:9px;font-size:16px"><button id="confirmNewBank">Vytvořit</button><button id="cancelNewBank">Zrušit</button></div><small id="bankCreateError"></small></div><small>Při hledání se používají pouze vzory z vybrané banky.</small></div><div class="actions"><button id="learnROI">＋ Přidat vzor ze snímku</button></div><details id="bankDetails" class="bankFold"><summary>📁 Banka fotografií · <span id="bankCount">0</span> vzorů</summary><div id="roiInfo">Načítám banku…</div><div id="bankList" style="display:grid;gap:8px;margin:10px 0"></div><button id="removeROI" class="danger">Smazat všechny vzory</button></details><div class="actions"><button id="closePatterns">Zavřít</button></div><small>Vzory zůstávají lokálně v IndexedDB. Vyhodnocení běží pouze na tlačítko.</small></div>
+<div class="panel" id="patternPanel" style="left:8px;right:auto;top:calc(110px + env(safe-area-inset-top));max-height:72%;overflow:auto"><h3>🧩 Vzory a porovnávání</h3><div class="section"><b>Minimální podobnost obrazového vzoru</b><div class="row"><label>Práh shody</label><span id="roiThresholdValue">75 %</span><input id="roiThreshold" type="range" min="40" max="95" value="75"></div><small>Čím vyšší práh, tím přísnější výběr. Nejde o statistickou jistotu.</small></div><div class="section"><label for="activeBank">Aktivní banka vzorů</label><div class="row"><select id="activeBank" style="flex:1;min-width:120px"></select><button id="addBank">＋ Nová banka</button><button id="renameBank">Přejmenovat</button></div><div id="bankCreateBox" style="display:none;margin-top:10px"><label for="newBankName">Název nové banky</label><div class="row"><input id="newBankName" type="text" placeholder="Např. Štítky" style="min-width:0;flex:1;padding:10px;background:#0b1423;color:white;border:1px solid #526780;border-radius:9px;font-size:16px"><button id="confirmNewBank">Vytvořit</button><button id="cancelNewBank">Zrušit</button></div><small id="bankCreateError"></small></div><small>Při hledání se používají pouze vzory z vybrané banky.</small></div><div class="actions" style="flex-wrap:wrap"><button id="learnROI">＋ Přidat ze zmrazeného snímku</button><button id="capturePattern" type="button">📷 Vyfotit nový vzor</button><button id="importPattern" type="button">🖼️ Vybrat fotografii</button><input id="patternImageFile" type="file" accept="image/*" style="display:none"></div><small>Vyfoť přímo do banky, nebo použij již zmrazený snímek. Pak označ výřez a ulož ho.</small><details id="bankDetails" class="bankFold"><summary>📁 Banka fotografií · <span id="bankCount">0</span> vzorů</summary><div id="roiInfo">Načítám banku…</div><div id="bankList" style="display:grid;gap:8px;margin:10px 0"></div><button id="removeROI" class="danger">Smazat všechny vzory</button></details><div class="actions"><button id="closePatterns">Zavřít</button></div><small>Vzory zůstávají lokálně v IndexedDB. Vyhodnocení běží pouze na tlačítko.</small></div>
 <div class="panel" id="ocrPanel" style="left:8px;right:auto;top:calc(110px + env(safe-area-inset-top));max-height:72%;overflow:auto"><h3>🔤 Kontrola značení (OCV)</h3><p>Zmraz snímek, vyber banku referenčních fotografií, zadej očekávaný text a stiskni VYHODNOTIT. Výsledek se v obraze zvýrazní zeleně, žlutě nebo červeně. Rozpoznání samo neověří fyzickou neporušenost tahů.</p><button id="selectOCRZone" style="display:none;width:100%;margin:6px 0">✏️ Označit oblast značení (zoom + obdélník)</button><div id="ocrZoneInfo" style="display:none;font-size:12px;color:#8be0c0">Oblast: automaticky podle banky</div><label for="expectedText">Vzorový text</label><textarea id="expectedText" rows="3" placeholder="Např. KTL 1234" style="width:100%;resize:vertical"></textarea><div class="row"><label>Minimální textová shoda</label><span id="ocrThresholdValue">80 %</span><input id="ocrThreshold" type="range" min="40" max="100" value="80"></div><input type="checkbox" id="ocrEnhance" checked style="display:none"><div class="section"><b>🔬 OCR + OCV · kontrola lokálních tahů</b><p>Aplikace používá všechny referenční fotografie z aktivní banky, automaticky kompenzuje natočení a porovnává text i fyzické tahy.</p><label for="ocvPattern">Prohledávaná banka vzorů</label><select id="ocvPattern" style="display:none;width:100%;margin:6px 0"></select><div id="ocvBankHint" style="font-size:12px;color:#bcd1e7"></div><img id="ocvBankPreview" style="display:none;max-width:100%;max-height:120px;object-fit:contain;background:white;border-radius:8px;margin:8px 0" alt="Vybraný obrazový vzor"><div class="row"><label>Minimální kvalita znaku (OCV)</label><span id="ocvSensitivityValue">70 %</span><input type="range" id="ocvSensitivity" min="1" max="100" value="70"></div><div id="markingSummary" class="markingSummary" aria-live="polite">
  <div class="markingMetric"><span>Shoda textu (OCR)</span><strong id="ocrMatchMeasured">—</strong></div>
  <div class="markingMeter"><i id="ocrMatchBar"></i></div>
@@ -28,7 +28,7 @@
  <div id="ocvVerdict" style="font-weight:700;padding:8px 0">Výsledek: NEOVĚŘENO</div>
  </div><details id="markingDetails"><summary>Podrobnosti kontroly</summary>
  <div id="ocrCharacterDetails" class="ocrCharacters"></div><details><summary>Technická diagnostika</summary><input id="ocvLocate" type="hidden" value="45"><span id="ocvLocateValue" style="display:none">45 %</span><div style="font-weight:600;margin-top:12px">Kvalita jednotlivých znaků (OCV – obrazová shoda s referencí)</div><div id="ocvCharacterDetails" class="ocrCharacters"></div><small>Zobrazené hodnoty vycházejí z dostupných porovnání. Pomlčka znamená nedostatečná data; hodnoty jsou přibližné, nejde o procento fyzického poškození.</small><div id="ocvDiagnostics" style="display:none" aria-hidden="true"></div></details></details></div><label for="ocrLang" style="display:none">Jazyk OCR</label><select id="ocrLang" style="display:none"><option value="eng">Latinka / čísla (ENG)</option><option value="ces+eng">Čeština + angličtina</option></select><p id="ocrProgress" style="font-size:12px;color:#a7c7e7">OCR model se načte až při prvním vyhodnocení; vyžaduje internet.</p><div id="ocrReadback" style="font-size:13px;color:#cde0ed">Přečtený text uvidíš po vyhodnocení.</div><div style="display:none" id="ocrDiff" style="font-family:monospace;font-size:19px;letter-spacing:1px;overflow-wrap:anywhere;margin:8px 0"></div><pre id="ocrResult" style="display:none;white-space:pre-wrap;word-break:break-word;background:#050b12;border-radius:8px;padding:10px;min-height:50px"></pre><div class="actions"><button id="closeOCR">Zavřít</button></div></div>
-<div id="roiEditor" style="display:none;position:fixed;inset:0;z-index:40;background:#0b111b;color:white;flex-direction:column;padding:calc(env(safe-area-inset-top) + 8px) 8px calc(env(safe-area-inset-bottom) + 8px)"><div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px"><b style="margin-right:auto">Editor vzoru</b><select id="editMode"><option value="free">Volný obrys</option><option value="rect">Obdélník</option></select><button id="editUndo">Zpět</button><button id="editReset">Zoom 1×</button><button id="editCancel">Zavřít</button></div><div id="editViewport" style="position:relative;flex:1;min-height:100px;background:#000;overflow:hidden;touch-action:none;border:1px solid #475569;border-radius:8px"><canvas id="editCanvas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:initial;pointer-events:auto;touch-action:none"></canvas></div><div style="padding:8px 2px;font-size:13px">Jedním prstem kresli. Dvěma prsty přibližuj a posouvej. Kresli kolem požadovaného prvku.</div><div style="display:flex;gap:8px"><input id="editName" placeholder="Název vzoru" style="flex:1;min-width:0;font-size:16px;border-radius:8px;padding:8px"><button id="editSave">Uložit vzor</button><button id="ocrZoneSave" style="display:none">Použít pro kontrolu textu</button><button id="ocvRefConfirm" style="display:none">📌 Uložit tento výřez</button></div><div id="editMessage" style="font-size:12px;color:#ffdf83;padding:4px"></div></div><div id="snapModal" style="display:none;position:fixed;inset:0;z-index:20;background:#000e;padding:calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom));overflow:auto"><div style="max-width:760px;margin:auto"><img id="snapImg" alt="Zachycený snímek" style="width:100%;height:auto;display:block;border-radius:12px;background:#111"><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button id="shareShot" style="font-size:16px;padding:12px;border:0;border-radius:10px;font-weight:700">Sdílet / Uložit do Fotek</button><button id="openShot" style="font-size:16px;padding:12px;border:0;border-radius:10px;font-weight:700">Otevřít obrázek</button><button id="closeShot" style="font-size:16px;padding:12px;border:0;border-radius:10px;font-weight:700">Zavřít</button></div><div id="snapHint" style="margin-top:8px;font-size:13px;line-height:1.4;color:#ddd">Na iPhonu použij „Sdílet / Uložit do Fotek“ a v systémové nabídce zvol „Uložit obrázek“.</div></div></div><div class="bottom">V23.11 • 3 režimy • Kamera nic nevyhodnocuje. Zmraz snímek → stiskni VYHODNOTIT. Kotouč / Vzor / OCR. Výpočet pouze po VYHODNOTIT.</div><script async src="https://docs.opencv.org/4.x/opencv.js"></script><script>
+<div id="roiEditor" style="display:none;position:fixed;inset:0;z-index:40;background:#0b111b;color:white;overflow-y:auto;flex-direction:column;padding:calc(env(safe-area-inset-top) + 8px) 8px calc(env(safe-area-inset-bottom) + 8px)"><div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px"><b style="margin-right:auto">Editor vzoru</b><select id="editMode"><option value="free">Volný obrys</option><option value="rect">Obdélník</option></select><button id="editUndo">Zpět</button><button id="editReset">Zoom 1×</button><button id="editCancel">Zavřít</button></div><div id="editViewport" style="position:relative;flex:1;min-height:100px;background:#000;overflow:hidden;touch-action:none;border:1px solid #475569;border-radius:8px"><canvas id="editCanvas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:initial;pointer-events:auto;touch-action:none"></canvas></div><div style="padding:8px 2px;font-size:13px">Jedním prstem kresli. Dvěma prsty přibližuj a posouvej. Kresli kolem požadovaného prvku.</div><div style="display:flex;gap:8px"><input id="editName" placeholder="Název vzoru" style="flex:1;min-width:0;font-size:16px;border-radius:8px;padding:8px"><button id="editSave">Uložit vzor</button><button id="ocrZoneSave" style="display:none">Použít pro kontrolu textu</button><button id="ocvRefConfirm" style="display:none">📌 Uložit tento výřez</button></div><div id="editMessage" style="font-size:12px;color:#ffdf83;padding:4px"></div></div><div id="snapModal" style="display:none;position:fixed;inset:0;z-index:20;background:#000e;padding:calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom));overflow:auto"><div style="max-width:760px;margin:auto"><img id="snapImg" alt="Zachycený snímek" style="width:100%;height:auto;display:block;border-radius:12px;background:#111"><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button id="addShotToBank" type="button" style="font-size:16px;padding:12px;border:1px solid #38d6a2;border-radius:10px;font-weight:700;background:#128464;color:white">🧩 Přidat do banky vzorů</button><button id="shareShot" style="font-size:16px;padding:12px;border:0;border-radius:10px;font-weight:700">Sdílet / Uložit do Fotek</button><button id="openShot" style="font-size:16px;padding:12px;border:0;border-radius:10px;font-weight:700">Otevřít obrázek</button><button id="closeShot" style="font-size:16px;padding:12px;border:0;border-radius:10px;font-weight:700">Zavřít</button></div><div id="snapHint" style="margin-top:8px;font-size:13px;line-height:1.4;color:#ddd">Na iPhonu použij „Sdílet / Uložit do Fotek“ a v systémové nabídce zvol „Uložit obrázek“.</div></div></div><div class="bottom">V23.14 • 3 režimy • Kamera nic nevyhodnocuje. Zmraz snímek → stiskni VYHODNOTIT. Kotouč / Vzor / OCR. Výpočet pouze po VYHODNOTIT.</div><script async src="https://docs.opencv.org/4.x/opencv.js"></script><script>
 const $=id=>document.getElementById(id),v=$('v'),out=$('o'),ctx=out.getContext('2d'),statusEl=$('status');let analysisDone=false,liveTick=0,loopGeneration=0,latestParts=[],latestGrayScale=1,learnMode=null,patternSamples=[],patternWeight=55,patternLead=5;let stream=null,running=false,cvReady=false,busy=false,last=0,tracks=[],frozen=false,frozenCanvas=document.createElement('canvas'),lastDiag=null,autoBusy=false,autoAcquireCount=0,analysisReady=false,autoFreezeTimer=null;
 const defaults={minPart:16,maxPart:80,outerSens:34,geomTol:24,ringArc:3,ringEdge:20,ringMargin:18,lockFrames:3,angleTol:30,dbgParts:false,dbgHoles:false,dbgRings:false};
 const ids=['minPart','maxPart','outerSens','geomTol','ringArc','ringEdge','ringMargin','lockFrames','angleTol','dbgParts','dbgHoles','dbgRings'];
@@ -36,15 +36,142 @@ function loadCfg(){let c={...defaults};try{c={...c,...JSON.parse(localStorage.ge
 function cfg(){let c={};for(const id of ids){const e=$(id);c[id]=e.type==='checkbox'?e.checked:+e.value}return c}function saveCfg(){localStorage.setItem('detectorV13',JSON.stringify(cfg()));updateLabels()}
 function updateLabels(){const c=cfg();$('vMinPart').textContent=c.minPart+'%';$('vMaxPart').textContent=c.maxPart+'%';$('vOuter').textContent=c.outerSens;$('vGeom').textContent='±'+c.geomTol+'%';$('vRing').textContent=c.ringArc+'%';$('vRingEdge').textContent=c.ringEdge;$('vMargin').textContent=c.ringMargin+'%';$('vLock').textContent=c.lockFrames;$('vAngle').textContent='±'+c.angleTol+'°'}loadCfg();ids.forEach(id=>$(id).addEventListener('input',saveCfg));$('defaults').onclick=()=>{localStorage.removeItem('detectorV13');loadCfg()};$('tune').onclick=()=>$('panel').classList.toggle('open');$('closePanel').onclick=()=>$('panel').classList.remove('open');
 function waitCV(){if(window.cv&&cv.Mat){cvReady=true;statusEl.textContent='OpenCV připraveno'}else setTimeout(waitCV,250)}waitCV();
-let torchOn=false;async function startCamera(){try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:$('cam').value},width:{ideal:1920},height:{ideal:1080},frameRate:{ideal:30,max:30}}});v.srcObject=stream;await v.play();v.style.visibility='visible';document.getElementById('frozenView').style.display='none';running=true;frameEpoch++;resize();clearVisualResults();loopGeneration++;analysisDone=false;liveTick=0;tracks=[];autoAcquireCount=0;analysisReady=false;frozen=false;torchOn=false;setupTorch();statusEl.textContent=`Kamera ${v.videoWidth}×${v.videoHeight}`;/* Bez detekční smyčky na živém videu. */}catch(e){statusEl.textContent='Kamera: '+e.message}}
+// Camera zoom: prefer the physical camera zoom exposed by MediaStreamTrack.
+// Fallback to a centred 2x digital crop that is also applied to the frozen frame.
+let cameraZoomFactor=1,cameraZoomMode='none',cameraZoomBase=1;
+function updateZoomButton(){const b=$('cameraZoom');b.textContent='🔍 '+cameraZoomFactor+'×';b.disabled=!running||frozen;b.setAttribute('aria-pressed',String(cameraZoomFactor===2));b.title=cameraZoomFactor===2?'Vrátit přiblížení na 1×':'Přiblížit kameru na 2×'}
+function updateCameraViewport(){
+ const viewport=$('liveViewport'),stage=$('stage'),sw=stage.clientWidth,sh=stage.clientHeight,vw=v.videoWidth,vh=v.videoHeight;
+ if(!sw||!sh||!vw||!vh){viewport.style.cssText='position:absolute;inset:0;overflow:hidden;pointer-events:none';return}
+ const factor=Math.min(sw/vw,sh/vh),dw=vw*factor,dh=vh*factor;
+ viewport.style.left=((sw-dw)/2)+'px';viewport.style.top=((sh-dh)/2)+'px';
+ viewport.style.width=dw+'px';viewport.style.height=dh+'px';viewport.style.right='auto';viewport.style.bottom='auto';
+}
+function applyZoomPreview(){v.style.transform=cameraZoomMode==='digital'&&cameraZoomFactor===2?'scale(2)':'none';v.style.transformOrigin='center center'}
+window.addEventListener('resize',updateCameraViewport);
+window.addEventListener('orientationchange',updateCameraViewport);
+function drawZoomedFrame(source,destCtx,destWidth,destHeight,factor=2){
+ const sw=source.videoWidth||source.width,sh=source.videoHeight||source.height;
+ if(!sw||!sh)return false;
+ const cropW=sw/factor,cropH=sh/factor;
+ destCtx.drawImage(source,(sw-cropW)/2,(sh-cropH)/2,cropW,cropH,0,0,destWidth,destHeight);
+ return true;
+}
+async function changeCameraZoom(nextFactor){
+ const tr=stream&&stream.getVideoTracks()[0];if(!tr||frozen)return;
+ const b=$('cameraZoom');b.disabled=true;
+ try{
+  if(nextFactor===1){
+   if(cameraZoomMode==='native'){
+    try{await tr.applyConstraints({advanced:[{zoom:cameraZoomBase}]})}catch(e){throw new Error('Obnovení zoomu kamery se nezdařilo: '+e.message)}
+   }
+   cameraZoomFactor=1;cameraZoomMode='none';
+  }else{
+   let nativeApplied=false;
+   let caps={};try{caps=typeof tr.getCapabilities==='function'?tr.getCapabilities():{}}catch(e){}
+   const range=caps&&caps.zoom;
+   const target=cameraZoomBase*2;
+   if(range&&typeof range.max==='number'&&range.max>=target&&range.min<=target){
+    try{
+     await tr.applyConstraints({advanced:[{zoom:target}]});
+     const actual=tr.getSettings&&tr.getSettings().zoom;
+     nativeApplied=typeof actual==='number'&&Math.abs(actual-target)<0.11;
+    }catch(e){nativeApplied=false}
+    if(!nativeApplied){try{await tr.applyConstraints({advanced:[{zoom:cameraZoomBase}]})}catch(e){}}
+   }
+   cameraZoomMode=nativeApplied?'native':'digital';cameraZoomFactor=2;
+  }
+  applyZoomPreview();resize();frameEpoch++;clearVisualResults();
+  statusEl.textContent='Přiblížení '+cameraZoomFactor+'× ('+(cameraZoomMode==='digital'?'digitální':'kamera')+')';
+ }catch(e){statusEl.textContent='Zoom: '+e.message}
+ finally{updateZoomButton()}
+}
+$('cameraZoom').onclick=()=>changeCameraZoom(cameraZoomFactor===1?2:1);
+let torchOn=false;async function startCamera(){try{
+ const keepZoom=cameraZoomFactor;
+ cameraZoomFactor=1;cameraZoomMode='none';cameraZoomBase=1;applyZoomPreview();
+ if(stream)stream.getTracks().forEach(t=>t.stop());
+ stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:$('cam').value},width:{ideal:1920},height:{ideal:1080},frameRate:{ideal:30,max:30}}});
+ v.srcObject=stream;await v.play();v.style.visibility='visible';document.getElementById('frozenView').style.display='none';running=true;frameEpoch++;resize();clearVisualResults();loopGeneration++;analysisDone=false;liveTick=0;tracks=[];autoAcquireCount=0;analysisReady=false;frozen=false;torchOn=false;setupTorch();
+ const tr=stream.getVideoTracks()[0],settings=tr&&tr.getSettings?tr.getSettings():{};
+ cameraZoomBase=typeof settings.zoom==='number'&&settings.zoom>0?settings.zoom:1;
+ updateZoomButton();
+ statusEl.textContent=`Kamera ${v.videoWidth}×${v.videoHeight}`;
+ if(keepZoom===2)await changeCameraZoom(2);
+ /* Bez detekční smyčky na živém videu. */
+ }catch(e){running=false;updateZoomButton();statusEl.textContent='Kamera: '+e.message}}
+
 function setupTorch(){const b=$('torch'),tr=stream&&stream.getVideoTracks()[0],cap=tr&&tr.getCapabilities?tr.getCapabilities():{};const ok=!!cap.torch;b.disabled=!ok;b.textContent=ok?'💡 Světlo OFF':'💡 Světlo N/A'}
 $('torch').onclick=async()=>{const tr=stream&&stream.getVideoTracks()[0];if(!tr)return;try{torchOn=!torchOn;await tr.applyConstraints({advanced:[{torch:torchOn}]});$('torch').textContent='💡 Světlo '+(torchOn?'ON':'OFF')}catch(e){torchOn=false;$('torch').textContent='💡 Světlo N/A';$('torch').disabled=true;statusEl.textContent='iOS torch nezpřístupnil'}};$('start').onclick=startCamera;$('cam').onchange=()=>{if(running)startCamera()};$('freeze').onclick=toggleFreeze;$('freeze2').onclick=toggleFreeze;$('autoTune').onclick=autoTune;
-let lastShotFile=null,lastShotUrl=null;
-$('shot').onclick=async()=>{if(!v.videoWidth)return;const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;const q=c.getContext('2d');q.drawImage(frozen?frozenCanvas:v,0,0);q.drawImage(out,0,0);const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.95));if(!blob)return;if(lastShotUrl)URL.revokeObjectURL(lastShotUrl);lastShotFile=new File([blob],`camera-detector-v13-1-${Date.now()}.jpg`,{type:'image/jpeg'});lastShotUrl=URL.createObjectURL(blob);$('snapImg').src=lastShotUrl;$('snapModal').style.display='block';};
+let lastShotFile=null,lastShotUrl=null,lastShotRawCanvas=null;
+function cameraFrameForBank(){
+ const source=frozen?frozenCanvas:v;
+ const w=frozen?frozenCanvas.width:v.videoWidth,h=frozen?frozenCanvas.height:v.videoHeight;
+ if(!w||!h||(!frozen&&v.readyState<2))throw new Error('Kamera ještě neposkytuje snímek. Spusť kameru a počkej na obraz.');
+ const c=document.createElement('canvas');c.width=w;c.height=h;
+ const q=c.getContext('2d',{willReadFrequently:true});
+ if(frozen)q.drawImage(frozenCanvas,0,0);
+ else if(cameraZoomFactor===2&&cameraZoomMode==='digital')drawZoomedFrame(v,q,w,h);
+ else q.drawImage(v,0,0);
+ return c;
+}
+function useFrameForPatternEditor(frame){
+ if(!frame||!frame.width||!frame.height)throw new Error('Chybí fotografovaný obrázek');
+ // A captured photograph is the exact image that will be cropped and stored.
+ // No camera transforms / overlay are baked into the reference.
+ frameEpoch++;clearVisualResults();ocrZone=null;
+ frozenCanvas.width=frame.width;frozenCanvas.height=frame.height;
+ frozenCanvas.getContext('2d').drawImage(frame,0,0);
+ const fv=$('frozenView');fv.width=frame.width;fv.height=frame.height;
+ fv.getContext('2d').drawImage(frozenCanvas,0,0);fv.style.display='block';
+ out.width=frame.width;out.height=frame.height;ctx.clearRect(0,0,out.width,out.height);
+ frozen=true;analysisDone=false;analysisReady=false;
+ v.style.visibility='hidden';
+ $('freeze').textContent='▶️ Další díl';$('freeze2').textContent='▶️ Další díl';
+ updateZoomButton();
+ statusEl.textContent='Fotografie připravena. Označ oblast a ulož vzor do banky '+activeBank+'.';
+}
+function editorViewportForFrame(){
+ // Keep a landscape image visible and easily touchable on tall phone screens.
+ const viewport=$('editViewport'),availableWidth=Math.max(200,viewport.clientWidth||window.innerWidth-18);
+ const aspect=frozenCanvas.width/Math.max(1,frozenCanvas.height);
+ const height=Math.max(165,Math.min(window.innerHeight*.57,availableWidth/aspect));
+ viewport.style.flex='0 0 auto';viewport.style.height=Math.round(height)+'px';
+}
+function reportPatternError(error){const msg='Nelze přidat vzor: '+(error&&error.message?error.message:error);statusEl.textContent=msg;$('editMessage').textContent=msg;}
+function openPatternEditorFromFrame(frame){useFrameForPatternEditor(frame);$('snapModal').style.display='none';$('editMode').value='rect';$('learnROI').click();}
+$('capturePattern').onclick=()=>{try{openPatternEditorFromFrame(cameraFrameForBank())}catch(e){reportPatternError(e)}};
+$('addShotToBank').onclick=()=>{try{if(!lastShotRawCanvas)throw new Error('Nejdřív vytvoř fotografii tlačítkem Snímek');openPatternEditorFromFrame(lastShotRawCanvas)}catch(e){reportPatternError(e)}};
+$('importPattern').onclick=()=>$('patternImageFile').click();
+$('patternImageFile').onchange=async e=>{
+ const file=e.target.files&&e.target.files[0];if(!file)return;
+ let url=null;
+ try{
+  if(!file.type.startsWith('image/'))throw new Error('Vyber obrázek');
+  url=URL.createObjectURL(file);
+  const img=new Image();img.src=url;await img.decode();
+  const scale=Math.min(1,1920/Math.max(img.naturalWidth,img.naturalHeight));
+  const c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.naturalWidth*scale));c.height=Math.max(1,Math.round(img.naturalHeight*scale));
+  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  openPatternEditorFromFrame(c);
+ }catch(err){reportPatternError(err)}finally{if(url)URL.revokeObjectURL(url);e.target.value=''}
+};
+$('shot').onclick=async()=>{
+ try{
+  const raw=cameraFrameForBank();lastShotRawCanvas=raw;
+  const c=document.createElement('canvas');c.width=raw.width;c.height=raw.height;
+  const q=c.getContext('2d');q.drawImage(raw,0,0);if(out.width&&out.height)q.drawImage(out,0,0);
+  const blob=await new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(new Error('Fotoaparát nevytvořil obrázek')),'image/jpeg',.95));
+  if(lastShotUrl)URL.revokeObjectURL(lastShotUrl);
+  lastShotFile=new File([blob],`part-detector-v23-14-${Date.now()}.jpg`,{type:'image/jpeg'});
+  lastShotUrl=URL.createObjectURL(blob);$('snapImg').src=lastShotUrl;
+  $('snapModal').style.display='block';
+ }catch(error){statusEl.textContent='Fotografování se nezdařilo: '+error.message}
+};
 $('closeShot').onclick=()=>{$('snapModal').style.display='none'};
 $('openShot').onclick=()=>{if(lastShotUrl)window.open(lastShotUrl,'_blank')};
 $('shareShot').onclick=async()=>{if(!lastShotFile)return;try{if(navigator.canShare&&navigator.canShare({files:[lastShotFile]})){await navigator.share({files:[lastShotFile],title:'Camera Detector V6'});$('snapHint').textContent='V nabídce Sdílet můžeš zvolit „Uložit obrázek“ do Fotek.'}else if(navigator.share){await navigator.share({title:'Camera Detector V6',url:lastShotUrl})}else{$('snapHint').textContent='Sdílení souboru tento prohlížeč nepodporuje. Klepni na „Otevřít obrázek“ a ulož jej dlouhým stiskem.'}}catch(e){if(e.name!=='AbortError')$('snapHint').textContent='Sdílení se nepodařilo. Zkus „Otevřít obrázek“.'}};
-function resize(){if(out.width!==v.videoWidth||out.height!==v.videoHeight){out.width=v.videoWidth;out.height=v.videoHeight}}
+function resize(){if(out.width!==v.videoWidth||out.height!==v.videoHeight){out.width=v.videoWidth;out.height=v.videoHeight}updateCameraViewport()}
 function setMetric(id,bar,value,kind){const target=$(id),fill=$(bar);if(!target||!fill)return;target.textContent=Number.isFinite(value)?value.toFixed(1).replace(/\.0$/, '')+' %':'—';fill.style.width=Number.isFinite(value)?Math.max(0,Math.min(100,value))+'%':'0%';fill.style.background=kind==='deviation'?'#f5a55b':'#38cc94'}
 function resetMarkingSummary(){setMetric('ocrMatchMeasured','ocrMatchBar',NaN);setMetric('ocvDeviationMeasured','ocvDeviationBar',NaN,'deviation');const ch=$('ocrCharacterDetails');if(ch)ch.replaceChildren();const oc=$('ocvCharacterDetails');if(oc)oc.replaceChildren();const rb=$('ocrReadback');if(rb)rb.textContent='Přečtený text uvidíš po vyhodnocení.';const d=$('ocvDiagnostics');if(d)d.textContent=''}
 function showOCRCharacterDetails(expected,actual){const holder=$('ocrCharacterDetails');if(!holder)return;holder.replaceChildren();const heading=document.createElement('div');heading.style.width='100%';heading.textContent='Shoda rozpoznaných znaků (ne fyzická kvalita tahů):';holder.append(heading);
@@ -52,8 +179,8 @@ function showOCRCharacterDetails(expected,actual){const holder=$('ocrCharacterDe
  const dp=Array.from({length:n+1},()=>new Array(m+1).fill(0));for(let i=0;i<=n;i++)dp[i][0]=i;for(let j=0;j<=m;j++)dp[0][j]=j;for(let i=1;i<=n;i++)for(let j=1;j<=m;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
  const parts=[];let i=n,j=m;while(i||j){if(i&&j&&dp[i][j]===dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1)){parts.push([a[i-1],b[j-1],a[i-1]===b[j-1]]);i--;j--}else if(j&&dp[i][j]===dp[i][j-1]+1){parts.push(['—',b[j-1],false]);j--}else{parts.push([a[i-1],'—',false]);i--}}parts.reverse();
  for(const [expectedChar,actualChar,ok] of parts){const c=document.createElement('div');c.className='ocrChar '+(ok?'pass':'fail');const big=document.createElement('b');big.textContent=actualChar;c.append(big);const info=document.createElement('small');info.textContent=ok?'100 %':'0 % (vzor '+expectedChar+')';c.append(info);holder.append(c)}
- const note=document.createElement('small');note.style.width='100%';note.textContent='100/0 % znamená shodu jednotlivého rozpoznaného znaku s očekáváním, nikoli procento fyzického poškození. OCV se nyní počítá pro celý výřez.';holder.append(note)}
-let frameEpoch=0;let lastOCVSnapshot=null;function clearVisualResults(){lastOCVSnapshot=null;if(out.width&&out.height)ctx.clearRect(0,0,out.width,out.height);const verdict=document.getElementById("ocvVerdict");if(verdict){verdict.textContent="Fyzická kontrola: nevyhodnoceno";verdict.style.color="#ffcc75"}const diff=document.getElementById("ocrDiff");if(diff)diff.textContent="";const result=document.getElementById("ocrResult");if(result)result.textContent="";resetMarkingSummary();}function setFrozen(on,auto=false){if(!v.videoWidth)return;if(on&&!frozen){ocrZone=null;const zi=document.getElementById('ocrZoneInfo');if(zi)zi.textContent='Oblast: automaticky podle banky';frameEpoch++;clearVisualResults();frozenCanvas.width=v.videoWidth;frozenCanvas.height=v.videoHeight;frozenCanvas.getContext('2d').drawImage(v,0,0);const fv=document.getElementById('frozenView');fv.width=v.videoWidth;fv.height=v.videoHeight;frozen=true;analysisDone=false;analysisReady=false;v.style.visibility='hidden';document.getElementById('frozenView').style.display='block';document.getElementById('frozenView').getContext('2d').drawImage(frozenCanvas,0,0);$('freeze').textContent='▶️ Další díl';$('freeze2').textContent='▶️ Další díl';statusEl.textContent='Snímek zmrazen. Stiskni VYHODNOTIT.';}else if(!on&&frozen){frameEpoch++;clearVisualResults();frozen=false;v.style.visibility='visible';document.getElementById('frozenView').style.display='none';analysisDone=false;analysisReady=false;autoAcquireCount=0;tracks=[];clearTimeout(autoFreezeTimer);$('freeze').textContent='❄️ Zmrazit';$('freeze2').textContent='❄️ Zmrazit';statusEl.textContent='Živá kamera – bez výpočtů. Zmraz snímek.';}}function toggleFreeze(){setFrozen(!frozen,false)}
+ const note=document.createElement('small');note.style.width='100%';note.textContent='100/0 % znamená shodu jednotlivého rozpoznaného znaku s očekáváním, nikoli procento fyzického poškození. OCV vyhodnocuje jednotlivé lokalizované znaky samostatně.';holder.append(note)}
+let frameEpoch=0;let lastOCVSnapshot=null;function clearVisualResults(){lastOCVSnapshot=null;if(out.width&&out.height)ctx.clearRect(0,0,out.width,out.height);const verdict=document.getElementById("ocvVerdict");if(verdict){verdict.textContent="Fyzická kontrola: nevyhodnoceno";verdict.style.color="#ffcc75"}const diff=document.getElementById("ocrDiff");if(diff)diff.textContent="";const result=document.getElementById("ocrResult");if(result)result.textContent="";resetMarkingSummary();}function setFrozen(on,auto=false){if(!v.videoWidth)return;if(on&&!frozen){ocrZone=null;const zi=document.getElementById('ocrZoneInfo');if(zi)zi.textContent='Oblast: automaticky podle banky';frameEpoch++;clearVisualResults();frozenCanvas.width=v.videoWidth;frozenCanvas.height=v.videoHeight;const freezeCtx=frozenCanvas.getContext('2d');if(cameraZoomFactor===2&&cameraZoomMode==='digital')drawZoomedFrame(v,freezeCtx,frozenCanvas.width,frozenCanvas.height);else freezeCtx.drawImage(v,0,0);const fv=document.getElementById('frozenView');fv.width=v.videoWidth;fv.height=v.videoHeight;frozen=true;updateZoomButton();analysisDone=false;analysisReady=false;v.style.visibility='hidden';document.getElementById('frozenView').style.display='block';document.getElementById('frozenView').getContext('2d').drawImage(frozenCanvas,0,0);$('freeze').textContent='▶️ Další díl';$('freeze2').textContent='▶️ Další díl';statusEl.textContent='Snímek zmrazen. Stiskni VYHODNOTIT.';}else if(!on&&frozen){frameEpoch++;clearVisualResults();frozen=false;updateZoomButton();v.style.visibility='visible';document.getElementById('frozenView').style.display='none';analysisDone=false;analysisReady=false;autoAcquireCount=0;tracks=[];clearTimeout(autoFreezeTimer);$('freeze').textContent='❄️ Zmrazit';$('freeze2').textContent='❄️ Zmrazit';statusEl.textContent='Živá kamera – bez výpočtů. Zmraz snímek.';}}function toggleFreeze(){setFrozen(!frozen,false)}
 function setVal(id,val){$(id).value=val;saveCfg()}
 function diagScore(d){if(!d)return-999;let s=0;s+=d.parts===1?80:(d.parts>0?25:-50);s+=Math.min(40,d.bestHoles*10);if(d.accepted)s+=90;s+=Math.min(80,d.margin||0);s-=Math.max(0,d.parts-1)*25;return s}
 async function autoTune(){if(autoBusy||!v.videoWidth)return;if(!frozen)toggleFreeze();autoBusy=true;$('autoTune').disabled=true;$('autoTune').textContent='AUTO…';const base=cfg(),tests=[];for(const outer of [22,30,38,46])for(const geom of [14,20,28])tests.push({outer,geom});let best=null;for(const t of tests){$('outerSens').value=t.outer;$('geomTol').value=t.geom;updateLabels();await new Promise(r=>setTimeout(r,260));const sc=diagScore(lastDiag);if(!best||sc>best.sc)best={...t,sc,diag:lastDiag?{...lastDiag}:null}}if(best){$('outerSens').value=best.outer;$('geomTol').value=best.geom;if(best.diag&&best.diag.accepted){$('ringMargin').value=Math.max(10,Math.min(45,Math.round(best.diag.margin*.55)));}saveCfg();await new Promise(r=>setTimeout(r,350));statusEl.textContent='AUTO hotovo – ověř výsledek a případně jemně dolaď';}else{for(const [k,val] of Object.entries(base))if($(k)&&$(k).type!=='checkbox')$(k).value=val;saveCfg()}$('autoTune').disabled=false;$('autoTune').textContent='AUTO NASTAVIT';autoBusy=false}
@@ -121,16 +248,16 @@ const editor=$('roiEditor'),editCanvas=$('editCanvas'),ec=editCanvas.getContext(
 function editMetrics(){const r=editCanvas.getBoundingClientRect(),w=r.width,h=r.height,iw=frozenCanvas.width,ih=frozenCanvas.height,base=Math.min(w/iw,h/ih);return {scale:base*ez,ox:w/2-iw*base*ez/2+ex,oy:h/2-ih*base*ez/2+ey}}
 function editPoint(x,y){const r=editCanvas.getBoundingClientRect(),m=editMetrics();return{x:Math.max(0,Math.min(frozenCanvas.width,(x-r.left-m.ox)/m.scale)),y:Math.max(0,Math.min(frozenCanvas.height,(y-r.top-m.oy)/m.scale))}}
 function renderEditor(){const r=editCanvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,3),w=r.width,h=r.height;if(!w||!h)return;const bw=Math.round(w*dpr),bh=Math.round(h*dpr);if(editCanvas.width!==bw||editCanvas.height!==bh){editCanvas.width=bw;editCanvas.height=bh}ec.setTransform(dpr,0,0,dpr,0,0);ec.clearRect(0,0,w,h);const m=editMetrics();ec.drawImage(frozenCanvas,m.ox,m.oy,frozenCanvas.width*m.scale,frozenCanvas.height*m.scale);if(editPath.length){ec.beginPath();editPath.forEach((p,i)=>i?ec.lineTo(m.ox+p.x*m.scale,m.oy+p.y*m.scale):ec.moveTo(m.ox+p.x*m.scale,m.oy+p.y*m.scale));if($('editMode').value==='rect'&&editPath.length>1){const a=editPath[0],b=editPath.at(-1);ec.beginPath();ec.rect(m.ox+a.x*m.scale,m.oy+a.y*m.scale,(b.x-a.x)*m.scale,(b.y-a.y)*m.scale)}else if(!drawing)ec.closePath();ec.strokeStyle='#00ff99';ec.lineWidth=3;ec.stroke();if(!drawing){ec.fillStyle='#00ff9933';ec.fill()}}}
-$('learnROI').onclick=()=>{editorPurpose='pattern';$('editMode').disabled=false;$('editSave').style.display='';$('ocrZoneSave').style.display='none';$('ocvRefConfirm').style.display='none';$('editName').style.display='';if(!frozen){statusEl.textContent='Nejdřív zmraz snímek';return}editor.style.display='flex';$('patternPanel').classList.remove('open');ez=1;ex=ey=0;editPath=[];pointers.clear();$('editMessage').textContent='';requestAnimationFrame(renderEditor)};
+$('learnROI').onclick=()=>{editorPurpose='pattern';$('editMode').disabled=false;$('editSave').style.display='';$('ocrZoneSave').style.display='none';$('ocvRefConfirm').style.display='none';$('editName').style.display='';if(!frozen){statusEl.textContent='Nejdřív zmraz snímek nebo zvol Vyfotit nový vzor';return}editor.style.display='flex';$('patternPanel').classList.remove('open');editorViewportForFrame();ez=1;ex=ey=0;editPath=[];pointers.clear();$('editMessage').textContent='';requestAnimationFrame(renderEditor)};
 $('editCancel').onclick=()=>editor.style.display='none';$('selectOCRZone').onclick=()=>{if(!frozen){statusEl.textContent='Nejdřív zmraz snímek';return}editorPurpose='ocr';$('editMode').value='rect';$('editMode').disabled=true;$('editSave').style.display='none';$('ocrZoneSave').style.display='';$('ocvRefConfirm').style.display='none';$('editName').style.display='none';editPath=[];ez=1;ex=ey=0;editor.style.display='flex';requestAnimationFrame(renderEditor)};$('ocrZoneSave').onclick=()=>{if(editPath.length<2){$('editMessage').textContent='Nakresli obdélník';return}const a=editPath[0],b=editPath.at(-1);let x=Math.floor(Math.min(a.x,b.x)),y=Math.floor(Math.min(a.y,b.y)),w=Math.ceil(Math.abs(a.x-b.x)),h=Math.ceil(Math.abs(a.y-b.y));if(w<25||h<15){$('editMessage').textContent='Oblast je příliš malá';return}ocrZone={x,y,w,h};$('ocrZoneInfo').textContent=`Oblast: ${w} × ${h} px` ;editor.style.display='none';statusEl.textContent='Oblast značení připravena. Stiskni VYHODNOTIT.'};$('editUndo').onclick=()=>{editPath=[];renderEditor()};$('editReset').onclick=()=>{ez=1;ex=ey=0;renderEditor()};$('editMode').onchange=()=>{editPath=[];renderEditor()};
 editCanvas.addEventListener('pointerdown',e=>{e.preventDefault();editCanvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1){drawing=true;editPath=[editPoint(e.clientX,e.clientY)]}else{drawing=false;editPath=[];gesture=null}renderEditor()});
 editCanvas.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;e.preventDefault();pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2){const ps=[...pointers.values()],dist=Math.max(1,Math.hypot(ps[0].x-ps[1].x,ps[0].y-ps[1].y)),mid={x:(ps[0].x+ps[1].x)/2,y:(ps[0].y+ps[1].y)/2};if(gesture){const rect=editCanvas.getBoundingClientRect(),cx=mid.x-rect.left,cy=mid.y-rect.top;const nextZ=Math.min(10,Math.max(1,gesture.z*dist/gesture.dist));const ratio=nextZ/gesture.z;ez=nextZ;ex=gesture.ex+(mid.x-gesture.mid.x)+(cx-rect.width/2-gesture.ex)*(1-ratio);ey=gesture.ey+(mid.y-gesture.mid.y)+(cy-rect.height/2-gesture.ey)*(1-ratio)}else gesture={dist,z:ez,mid,ex,ey};renderEditor()}else if(drawing){const p=editPoint(e.clientX,e.clientY);if($('editMode').value==='rect')editPath=[editPath[0],p];else editPath.push(p);renderEditor()}});
 function endPointer(e){pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;drawing=false;renderEditor()}editCanvas.addEventListener('pointerup',endPointer);editCanvas.addEventListener('pointercancel',endPointer);
 function polygonInside(x,y,poly){let inside=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const a=poly[i],b=poly[j];if(((a.y>y)!==(b.y>y))&&(x<(b.x-a.x)*(y-a.y)/(b.y-a.y)+a.x))inside=!inside}return inside}
-$('editSave').onclick=async()=>{try{if(editPath.length<2)throw Error('Nejdřív nakresli oblast');const rectMode=$('editMode').value==='rect';let points=rectMode?[editPath[0],{x:editPath.at(-1).x,y:editPath[0].y},editPath.at(-1),{x:editPath[0].x,y:editPath.at(-1).y}]:editPath;if(points.length<3)throw Error('Obrys musí mít alespoň 3 body');const x=Math.floor(Math.min(...points.map(p=>p.x))),y=Math.floor(Math.min(...points.map(p=>p.y))),w=Math.ceil(Math.max(...points.map(p=>p.x)))-x,h=Math.ceil(Math.max(...points.map(p=>p.y)))-y;if(w<15||h<15)throw Error('Oblast je příliš malá');const factor=Math.min(1,220/Math.max(w,h)),cw=Math.max(12,Math.round(w*factor)),ch=Math.max(12,Math.round(h*factor));const crop=document.createElement('canvas');crop.width=cw;crop.height=ch;const q=crop.getContext('2d');q.fillStyle='#777';q.fillRect(0,0,cw,ch);q.save();q.beginPath();points.forEach((p,i)=>i?q.lineTo((p.x-x)*factor,(p.y-y)*factor):q.moveTo((p.x-x)*factor,(p.y-y)*factor));q.closePath();q.clip();q.drawImage(frozenCanvas,x,y,w,h,0,0,cw,ch);q.restore();const name=$('editName').value.trim()||`Vzor ${bank.length+1}`;await bankReady;await dbAction('readwrite',st=>st.put({id:Date.now()+'-'+Math.random(),name,bank:activeBank,data:crop.toDataURL('image/png'),w,h,mode:rectMode?'rect':'free'}));await refreshBank();editor.style.display='none';statusEl.textContent=`Vzor „${name}“ uložen do banky`; }catch(e){$('editMessage').textContent=e.message}};
+$('editSave').onclick=async()=>{try{if(editPath.length<2)throw Error('Na fotografii označ oblast tažením prstu. Potom klepni na Uložit vzor.');const rectMode=$('editMode').value==='rect';let points=rectMode?[editPath[0],{x:editPath.at(-1).x,y:editPath[0].y},editPath.at(-1),{x:editPath[0].x,y:editPath.at(-1).y}]:editPath;if(points.length<3)throw Error('Obrys musí mít alespoň 3 body');const x=Math.floor(Math.min(...points.map(p=>p.x))),y=Math.floor(Math.min(...points.map(p=>p.y))),w=Math.ceil(Math.max(...points.map(p=>p.x)))-x,h=Math.ceil(Math.max(...points.map(p=>p.y)))-y;if(w<15||h<15)throw Error('Oblast je příliš malá');const factor=Math.min(1,220/Math.max(w,h)),cw=Math.max(12,Math.round(w*factor)),ch=Math.max(12,Math.round(h*factor));const crop=document.createElement('canvas');crop.width=cw;crop.height=ch;const q=crop.getContext('2d');q.fillStyle='#777';q.fillRect(0,0,cw,ch);q.save();q.beginPath();points.forEach((p,i)=>i?q.lineTo((p.x-x)*factor,(p.y-y)*factor):q.moveTo((p.x-x)*factor,(p.y-y)*factor));q.closePath();q.clip();q.drawImage(frozenCanvas,x,y,w,h,0,0,cw,ch);q.restore();const name=$('editName').value.trim()||`Vzor ${bank.length+1}`;await bankReady;await dbAction('readwrite',st=>st.put({id:Date.now()+'-'+Math.random(),name,bank:activeBank,data:crop.toDataURL('image/png'),w,h,mode:rectMode?'rect':'free'}));await refreshBank();editor.style.display='none';$('patternPanel').classList.add('open');$('bankDetails').open=true;statusEl.textContent=`Vzor „${name}“ uložen do banky ${activeBank} (${activePatterns().length} vzorů)`; }catch(e){$('editMessage').textContent=e.message}};
 async function evaluateROI(){try{await bankReady;if(!activePatterns().length)throw Error('Banka je prázdná');if(!cvReady)throw Error('OpenCV se ještě nenačetlo');const scale=Math.min(1,650/Math.max(frozenCanvas.width,frozenCanvas.height)),scene=document.createElement('canvas');scene.width=Math.round(frozenCanvas.width*scale);scene.height=Math.round(frozenCanvas.height*scale);scene.getContext('2d').drawImage(frozenCanvas,0,0,scene.width,scene.height);let src=cv.imread(scene),gray=new cv.Mat();cv.cvtColor(src,gray,cv.COLOR_RGBA2GRAY);let all=[];try{for(const item of activePatterns()){const img=new Image();img.src=item.data;await img.decode();for(const factor of [.8,1,1.2]){const w=Math.round(item.w*scale*factor),h=Math.round(item.h*scale*factor);if(w<8||h<8||w>=scene.width||h>=scene.height)continue;const temp=document.createElement('canvas');temp.width=w;temp.height=h;temp.getContext('2d').drawImage(img,0,0,w,h);const t=cv.imread(temp),tg=new cv.Mat(),result=new cv.Mat();try{cv.cvtColor(t,tg,cv.COLOR_RGBA2GRAY);cv.matchTemplate(gray,tg,result,cv.TM_CCOEFF_NORMED);const loc=cv.minMaxLoc(result);all.push({name:item.name,score:loc.maxVal,x:loc.maxLoc.x/scale,y:loc.maxLoc.y/scale,w:w/scale,h:h/scale})}finally{t.delete();tg.delete();result.delete()}}}}finally{src.delete();gray.delete()}all.sort((a,b)=>b.score-a.score);const winner=all[0],threshold=+$('roiThreshold').value/100;ctx.clearRect(0,0,out.width,out.height);if(winner&&winner.score>=threshold){ctx.strokeStyle='#22ff88';ctx.lineWidth=7;ctx.strokeRect(winner.x,winner.y,winner.w,winner.h);statusEl.textContent=`Nalezen „${winner.name}“ • podobnost ${(winner.score*100).toFixed(1)} %`}else statusEl.textContent=`Bez shody • nejlepší ${winner?(winner.score*100).toFixed(1):'0'} % (minimum ${$('roiThreshold').value} %)`}catch(e){statusEl.textContent='Chyba banky vzorů: '+e.message}finally{busy=false;analysisDone=true}}
 
-if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js?v=23-10').catch(()=>{});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js?v=23-14').catch(()=>{});
 
 // V14 OCR: načítání až na vyžádání, žádná práce nad živým videem.
 $('ocrOpen').onclick=()=>{$('ocrPanel').classList.toggle('open');$('patternPanel').classList.remove('open');$('panel').classList.remove('open');$('method').value='ocr'};
@@ -329,99 +456,125 @@ function ocvImageCharBoxes(crop,expected){
 // Fallback character regions are determined on the SAME normalized ink image that
 // drives OCV. This avoids mixing OCR variant pixel coordinates and binarized OCV coordinates.
 // Regions are approximate and must not be presented as precisely segmented glyphs.
+// V23.14: Word-aware row segmentation. Partial results are retained per glyph.
 function ocvNormalizedGlyphBoxes(reference,crop,expected){
- // Segment actual glyph ink in each line, rather than dividing the entire crop width.
- // Source and target glyph coordinates BOTH derive from this same normalized OCV mask.
- const lines=String(expected).split(/\r?\n/).map(normalizeOCR).filter(Boolean);
+ const rawLines=String(expected).split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+ const lines=rawLines.map(s=>s.split(/\s+/).map(normalizeOCR).filter(Boolean)).filter(words=>words.length);
  if(!reference?.cur||!reference?.ab||!lines.length)return [];
- const cur=reference.cur,W=320,H=100,ab=reference.ab;
- const rows=new Array(H).fill(0);
- for(let y=0;y<H;y++)for(let x=0;x<W;x++)rows[y]+=cur[y*W+x];
- const runs=[];let a=-1,last=-1;
+ const cur=reference.cur,ab=reference.ab,W=320,H=100;
+ const row=new Uint32Array(H);
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++)row[y]+=cur[y*W+x];
+ const activeThreshold=Math.max(3,Math.round(W*.009));
+ let runs=[],s=-1,last=-1;
  for(let y=0;y<H;y++){
-  if(rows[y]>=Math.max(3,W*.009)){if(a<0)a=y;last=y}
-  else if(a>=0&&y-last>2){if(last-a>=4)runs.push({a,b:last+1,ink:rows.slice(a,last+1).reduce((s,v)=>s+v,0)});a=-1}
+  if(row[y]>=activeThreshold){if(s<0)s=y;last=y}
+  else if(s>=0&&y-last>3){if(last-s>=4)runs.push({a:s,b:last+1});s=-1}
  }
- if(a>=0&&last-a>=4)runs.push({a,b:last+1,ink:rows.slice(a,last+1).reduce((s,v)=>s+v,0)});
- // Explicit line grouping: do not let the printed date become part of the 2nd OCR line.
- let bands=runs.sort((a,b)=>a.a-b.a);
- if(bands.length>lines.length){
-  // Rejoin separated upper/lower strokes, but select the earliest full text lines.
-  const merged=[];
-  for(const r of bands){const prev=merged[merged.length-1];if(prev&&r.a-prev.b<=3){prev.b=r.b;prev.ink+=r.ink}else merged.push({...r})}
-  bands=merged;
+ if(s>=0&&last-s>=4)runs.push({a:s,b:last+1});
+ // Merge letter components within one text line. The date printed below the ROI
+ // is not allowed to silently become the last expected OCR line.
+ let bands=[];
+ for(const r of runs){const prev=bands[bands.length-1];if(prev&&r.a-prev.b<=4)prev.b=r.b;else bands.push({...r})}
+ const numberOfLines=lines.length;
+ if(bands.length<numberOfLines&&numberOfLines===2){
+  // Split broad touching lines using the true horizontal-ink valley.
+  const source=bands[0]||{a:0,b:H};let pivot=-1,min=Infinity;
+  for(let y=source.a+7;y<source.b-7;y++){
+   const val=row[y-1]+row[y]+row[y+1]+Math.abs(y-(source.a+source.b)/2)*.12;
+   if(val<min){min=val;pivot=y}
+  }
+  if(pivot>=0)bands=[{a:source.a,b:pivot},{a:pivot+1,b:source.b}];
  }
- if(bands.length>lines.length)bands=bands.slice(0,lines.length);
- if(bands.length!==lines.length){
-  if(lines.length!==2)return [];
-  const ys=rows.map((v,i)=>v>=3?i:-1).filter(v=>v>=0);
-  if(ys.length<14)return [];
-  // A split is allowed only at a real, nearly empty horizontal valley.
-  const low=ys[0],high=ys[ys.length-1]+1;
-  let best=-1,score=Infinity;
-  for(let y=low+7;y<high-7;y++){
-   const s=rows[y-1]+rows[y]+rows[y+1];
-   if(s<score){score=s;best=y}
+ const out=[];let index=0;
+ const toCropX=x=>(ab.x0+x/W*(ab.x1-ab.x0+1))/420*crop.width;
+ const toCropY=y=>(ab.y0+y/H*(ab.y1-ab.y0+1))/140*crop.height;
+ function placeholder(ch,idx){return {ch,index:idx,quality:null,unlocated:true,approximate:true}}
+ function joinRuns(proj,threshold){const a=[];let st=-1,en=-1;
+  for(let x=0;x<proj.length;x++){
+   if(proj[x]>=threshold){if(st<0)st=x;en=x}
+   else if(st>=0&&x-en>1){if(en-st>=1)a.push({a:st,b:en+1});st=-1}
   }
-  if(best<0||score>W*.10)return [];
-  bands=[{a:low,b:best},{a:best+1,b:high}];
+  if(st>=0&&en-st>=1)a.push({a:st,b:en+1});return a;
  }
- bands=bands.slice(0,lines.length);
- if(bands.length!==lines.length)return [];
- const output=[];let index=0;
- for(let li=0;li<lines.length;li++){
-  const letters=lines[li],band=bands[li];
-  const y0=Math.max(0,band.a-1),y1=Math.min(H,band.b+1);
-  const cols=new Array(W).fill(0);
-  for(let y=y0;y<y1;y++)for(let x=0;x<W;x++)cols[x]+=cur[y*W+x];
-  // Actual vertical ink groups are the primary segmentation source.
-  const groups=[];let s=-1,lastX=-1;
-  for(let x=0;x<W;x++){
-   if(cols[x]>=2){if(s<0)s=x;lastX=x}
-   else if(s>=0&&x-lastX>1){if(lastX-s>=1)groups.push({a:s,b:lastX+1});s=-1}
-  }
-  if(s>=0&&lastX-s>=1)groups.push({a:s,b:lastX+1});
-  if(groups.length<letters.length){
-   // Fewer ink groups than characters: a glyph cannot be safely localized.
-   // Never extrapolate H/z into blank space, as older versions did.
-   return [];
-  }
-  // OCR may contain dust/split stems. Merge adjacent groups into exactly N characters,
-  // guided by typical stroke widths and the expected locations of large word spaces.
-  const N=letters.length, left=groups[0].a,right=groups[groups.length-1].b;
-  const gaps=groups.slice(0,-1).map((g,i)=>({i,space:groups[i+1].a-g.b}));
-  let boundaries;
-  if(groups.length===N)boundaries=groups.map(g=>({...g}));
-  else {
-   // Optimize segmentation of connected components with dynamic programming.
-   const M=groups.length, dp=Array.from({length:N+1},()=>Array(M+1).fill(Infinity));
-   const path=Array.from({length:N+1},()=>Array(M+1).fill(-1));dp[0][0]=0;
-   const mean=(right-left)/N;
-   for(let k=1;k<=N;k++)for(let j=k;j<=M-(N-k);j++)for(let i=k-1;i<j;i++){
-    const width=groups[j-1].b-groups[i].a;
-    const expectedWidth=mean*('1I'.includes(letters[k-1])?.65:'MW'.includes(letters[k-1])?1.25:1);
-    const penalty=Math.abs(width-expectedWidth)/Math.max(1,mean);
-    const splitGap=j<M?Math.min(20,groups[j].a-groups[j-1].b):0;
-    const cost=dp[k-1][i]+penalty*penalty-0.12*splitGap;
-    if(cost<dp[k][j]){dp[k][j]=cost;path[k][j]=i}
+ function partitionGroups(groups,n,profile){
+  if(!groups.length||n<1)return [];
+  let work=groups.map(g=>({...g}));
+  // Split touching glyphs at the thinnest column close to the expected boundary.
+  // Never create a bounding box wholly outside actual foreground ink.
+  while(work.length<n){
+   let pick=-1,score=-Infinity;
+   for(let i=0;i<work.length;i++){
+    const width=work[i].b-work[i].a;
+    if(width<5)continue;
+    const s=width/(work.some(g=>g!==work[i])?Math.max(1,(work.at(-1).b-work[0].a)/n):Math.max(1,width/n));
+    if(s>score){score=s;pick=i}
    }
-   if(!Number.isFinite(dp[N][M]))return [];
-   boundaries=[];let j=M;
-   for(let k=N;k>=1;k--){const i=path[k][j];if(i<0)return [];boundaries.unshift({a:groups[i].a,b:groups[j-1].b});j=i}
+   if(pick<0)break;
+   const g=work[pick],mid=(g.a+g.b)/2,search=Math.max(2,Math.round((g.b-g.a)*.22));let cut=-1,best=Infinity;
+   for(let x=Math.max(g.a+2,Math.floor(mid-search));x<=Math.min(g.b-2,Math.ceil(mid+search));x++){
+    const val=profile[x]+Math.abs(x-mid)*.13;if(val<best){best=val;cut=x}
+   }
+   if(cut<=g.a+1||cut>=g.b-1)break;
+   work.splice(pick,1,{a:g.a,b:cut},{a:cut,b:g.b});
   }
-  // Reject implausible assignment rather than reporting fake damage scores.
-  const typical=(right-left)/N;
-  if(boundaries.some(g=>g.b<=g.a||g.b-g.a>typical*2.4))return [];
-  const toCropX=x=>(ab.x0+(x/W)*(ab.x1-ab.x0+1))/420*crop.width;
-  const toCropY=y=>(ab.y0+(y/H)*(ab.y1-ab.y0+1))/140*crop.height;
-  for(let j=0;j<N;j++){
-   const g=boundaries[j],x0=Math.max(0,g.a-1),x1=Math.min(W,g.b+1);
-   output.push({ch:letters[j],index:index+j,x:toCropX(x0),y:toCropY(y0),w:toCropX(x1)-toCropX(x0),h:toCropY(y1)-toCropY(y0),mx0:x0,mx1:x1,my0:y0,my1:y1,approximate:true});
+  if(work.length<n)return work;
+  if(work.length===n)return work;
+  // Merge excessive fragments while favouring cuts at real whitespace columns.
+  const m=work.length,mean=(work[m-1].b-work[0].a)/n;
+  const dp=Array.from({length:n+1},()=>new Float64Array(m+1).fill(Infinity));
+  const pred=Array.from({length:n+1},()=>new Int16Array(m+1).fill(-1));dp[0][0]=0;
+  for(let k=1;k<=n;k++)for(let j=k;j<=m-(n-k);j++)for(let i=k-1;i<j;i++){
+   const width=work[j-1].b-work[i].a;
+   const widthPenalty=Math.pow((width-mean)/Math.max(1,mean),2);
+   const splitGap=j<m?work[j].a-work[j-1].b:0;
+   const score=dp[k-1][i]+widthPenalty-.13*Math.min(15,splitGap);
+   if(score<dp[k][j]){dp[k][j]=score;pred[k][j]=i}
   }
-  index+=N;
+  let pos=m;const answer=[];
+  for(let k=n;k>=1;k--){const i=pred[k][pos];if(i<0)break;answer.unshift({a:work[i].a,b:work[pos-1].b});pos=i}
+  return answer;
  }
- return output;
+ for(let li=0;li<lines.length;li++){
+  const words=lines[li],n=words.reduce((a,w)=>a+w.length,0),band=bands[li];
+  if(!band){for(const word of words)for(const ch of word)out.push(placeholder(ch,index++));continue}
+  const y0=Math.max(0,band.a-1),y1=Math.min(H,band.b+1),cols=new Uint16Array(W);
+  for(let y=y0;y<y1;y++)for(let x=0;x<W;x++)cols[x]+=cur[y*W+x];
+  let groups=joinRuns(cols,Math.max(2,Math.round((y1-y0)*.035)));
+  // Remove isolated specks; keep the main character foreground.
+  const important=groups.filter(g=>(g.b-g.a)>=2&&cols.subarray(g.a,g.b).reduce((s,v)=>s+v,0)>=4);
+  if(important.length>=Math.min(2,words.length))groups=important;
+  if(!groups.length){for(const word of words)for(const ch of word)out.push(placeholder(ch,index++));continue}
+  // Allocate groups to words by the K-1 largest real gaps, with at least one
+  // foreground group per word. These gaps come from image ink, not text width.
+  let wordRanges=[];const k=words.length;
+  if(k===1)wordRanges=[groups];
+  else if(groups.length>=k){
+   const gaps=[];for(let i=0;i<groups.length-1;i++)gaps.push({i,weight:groups[i+1].a-groups[i].b});
+   gaps.sort((a,b)=>b.weight-a.weight);
+   const cuts=gaps.slice(0,k-1).map(g=>g.i+1).sort((a,b)=>a-b);
+   let start=0;for(const end of [...cuts,groups.length]){wordRanges.push(groups.slice(start,end));start=end}
+  }else wordRanges=[groups];
+  if(wordRanges.length!==k){
+   // Malformed/merged word gaps: keep individual cards but with unknown score.
+   for(const word of words)for(const ch of word)out.push(placeholder(ch,index++));continue;
+  }
+  for(let wi=0;wi<k;wi++){
+   const word=words[wi],gg=wordRanges[wi];
+   if(!gg.length){for(const ch of word)out.push(placeholder(ch,index++));continue}
+   const charGroups=partitionGroups(gg,word.length,cols);
+   for(let ci=0;ci<word.length;ci++){
+    const ch=word[ci],g=charGroups[ci],idx=index++;
+    if(!g){out.push(placeholder(ch,idx));continue}
+    const x0=Math.max(0,g.a-1),x1=Math.min(W,g.b+1);
+    if(x1-x0<3){out.push(placeholder(ch,idx));continue}
+    const xs=toCropX(x0),xe=toCropX(x1),ys=toCropY(y0),ye=toCropY(y1);
+    out.push({ch,index:idx,x:xs,y:ys,w:xe-xs,h:ye-ys,mx0:x0,mx1:x1,my0:y0,my1:y1,approximate:true});
+   }
+  }
+ }
+ return out;
 }
+
 // Per-glyph stroke integrity: compare actual and reference ink at the SAME registered
 // coordinates. Analyse connected missing-ink clusters instead of just mean similarity.
 // No artificial fill/repair is applied to the inspected character.
@@ -448,6 +601,9 @@ function ocvGlyphMeasures(compare,boxes,crop){
  // 1 px allowance is for registration/antialiasing, not for closing stroke gaps.
  const rt=ocvDilate(ref,W,H,1),ct=ocvDilate(cur,W,H,1),res=[];
  for(const b of boxes){
+  if(!Number.isFinite(b.mx0)||!Number.isFinite(b.mx1)||!Number.isFinite(b.my0)||!Number.isFinite(b.my1)){
+   res.push({...b,quality:null});continue;
+  }
   const x0=b.mx0!==undefined?Math.max(0,b.mx0):Math.max(0,Math.floor(((b.x/crop.width*420-ab.x0)/(ab.x1-ab.x0+1))*W));
   const x1=b.mx1!==undefined?Math.min(W,b.mx1):Math.min(W,Math.ceil((((b.x+b.w)/crop.width*420-ab.x0)/(ab.x1-ab.x0+1))*W));
   const y0=b.my0!==undefined?Math.max(0,b.my0):Math.max(0,Math.floor(((b.y/crop.height*140-ab.y0)/(ab.y1-ab.y0+1))*H));
@@ -487,7 +643,7 @@ function ocvGlyphMeasures(compare,boxes,crop){
  return res;
 }
 
-// V23.11: high-detail, independent stroke-integrity check. Work on the ORIGINAL
+// V23.14: high-detail, independent stroke-integrity check. Work on the ORIGINAL
 // binarized image of each reference/capture (420x140), not the downsampled and
 // smoothed registration mask (320x100). Never dilate across broken strokes.
 function ocvHighDetailGlyph(compare, box){
@@ -538,7 +694,7 @@ function ocvHighDetailGlyph(compare, box){
  return {severity:defect,rawMissing:missing/ink,largestGap:largest,significant,
          inspectedPixels:ink,components:large.length};
 }
-// V23.11: One threshold governs every glyph status, final OCV decision and overlay.
+// V23.14: One threshold governs every glyph status, final OCV decision and overlay.
 function ocvQualityClass(quality,cutoff){
  if(!Number.isFinite(quality))return 'na';
  if(quality<cutoff)return 'fail';
@@ -565,7 +721,7 @@ function showOCVDecision(state,measures,zone,cutoff){
  const col=state==='NOK'?'#ff506b':state==='NEJISTÉ'?'#ffcf4d':'#22ef94';
  const verdict=$('ocvVerdict');verdict.textContent='Výsledek: '+state;verdict.style.color=col;
  if(zone){
-  const rectangles=measures.filter(g=>Number.isFinite(g.quality)).flatMap(g=>{
+  const rectangles=measures.filter(g=>Number.isFinite(g.quality)&&[g.x,g.y,g.w,g.h].every(Number.isFinite)&&g.w>0&&g.h>0).flatMap(g=>{
    const cls=ocvQualityClass(g.quality,cutoff);
    if(cls==='pass')return [];
    return [{x:g.x,y:g.y,w:g.w,h:g.h,color:cls==='fail'?'#ff506b':'#ffcf4d'}];
@@ -575,7 +731,11 @@ function showOCVDecision(state,measures,zone,cutoff){
 }
 function ocvRenderGlyphs(measures,threshold){
  const holder=$('ocvCharacterDetails');if(!holder)return;holder.replaceChildren();
- if(!measures.length){holder.textContent='Pro tento snímek nejsou dostupné spolehlivé oblasti jednotlivých znaků.';return}
+ if(!measures.length){
+  const expected=normalizeOCR($('expectedText').value||'');
+  measures=Array.from(expected,(ch,index)=>({ch,index,quality:null}));
+ }
+ if(!measures.length){holder.textContent='Nejdřív zadej kontrolovaný text.';return}
  for(const g of measures){
   const el=document.createElement('div');
   // Green passes the actual user threshold; yellow is close to it, red fails it.
@@ -651,14 +811,25 @@ async function ocvReferenceCompare(crop,item){
  const NW=320,NH=100,ref=ocvSmooth(ocvCropMask(rm,W,H,rb,NW,NH),NW,NH),cur=ocvSmooth(ocvCropMask(am,W,H,ab,NW,NH),NW,NH);
  const m=ocvCompareMasks(ref,cur,NW,NH);
  if(m.refInk<200||m.curInk<150||m.local.usable<5)return {valid:false,reason:'málo čitelných tahů'};
- // Keep the original-resolution captures for physical stroke inspection.
- // Saved bank thumbnails may have lower native resolution; never fabricate detail.
- const nativeRW=Math.min(1200,img.naturalWidth||img.width),nativeRH=Math.min(1200,img.naturalHeight||img.height);
+ // All bank references participate in the initial comparison. Expensive
+ // native-resolution masks are only needed AFTER geometric registration.
+ return {valid:true,...m,ref,cur,ab,rb,sourceImage:img};
+}
+async function ocvPrepareNativeMasks(usable,crop,progress){
+ // The actual frame is identical for every reference: compute its binary image once.
  const nativeCW=Math.min(1200,crop.width),nativeCH=Math.min(1200,crop.height);
- const nativeRef=ocvMask(ocvGray(ocvCanvas(img,nativeRW,nativeRH)),nativeRW,nativeRH);
  const nativeCur=ocvMask(ocvGray(ocvCanvas(crop,nativeCW,nativeCH)),nativeCW,nativeCH);
- const nativeRB=ocvBounds(nativeRef,nativeRW,nativeRH),nativeAB=ocvBounds(nativeCur,nativeCW,nativeCH);
- return {valid:true,...m,ref,cur,ab,rb,nativeRef,nativeCur,nativeRB,nativeAB,nativeRW,nativeRH,nativeCW,nativeCH};
+ const nativeAB=ocvBounds(nativeCur,nativeCW,nativeCH);
+ for(let i=0;i<usable.length;i++){
+  const r=usable[i],img=r.sourceImage;
+  if(!img)continue;
+  if(progress)progress(i+1,usable.length);
+  await new Promise(resolve=>setTimeout(resolve,0));
+  const nativeRW=Math.min(1200,img.naturalWidth||img.width),nativeRH=Math.min(1200,img.naturalHeight||img.height);
+  const nativeRef=ocvMask(ocvGray(ocvCanvas(img,nativeRW,nativeRH)),nativeRW,nativeRH);
+  Object.assign(r,{nativeRef,nativeCur,nativeRB:ocvBounds(nativeRef,nativeRW,nativeRH),nativeAB,
+   nativeRW,nativeRH,nativeCW,nativeCH});
+ }
 }
 async function verifyOCV(crop,item,ocrScore,textThreshold,locScore,otherMatches=[],zone=null,ocrBoxes=[]){
  const verdict=$('ocvVerdict');const sensitivity=Number($('ocvSensitivity').value);
@@ -668,9 +839,13 @@ async function verifyOCV(crop,item,ocrScore,textThreshold,locScore,otherMatches=
  function report(state,reason){
   showOCVDecision(state,measures,zone,cutoff);
   const d=$('ocvDiagnostics');if(d)d.textContent=reason||'';
+  $('ocrProgress').textContent='Vyhodnocení dokončeno.';
  }
  if(ocrScore<textThreshold){report('NOK','Přečtený text nesplňuje nastavenou shodu OCR.');return}
  if(!item){report('NEJISTÉ','Chybí referenční vzor.');return}
+ // Show a card for every expected character immediately. A slow/missing comparison
+ // must never make the entire OCV diagnostics section disappear.
+ ocvRenderGlyphs([],cutoff);
  const all=[{item,score:locScore},...otherMatches],results=[];
  for(let i=0;i<all.length;i++){
   $('ocrProgress').textContent='Porovnávám referenci '+(i+1)+'/'+all.length+'…';
@@ -689,16 +864,20 @@ async function verifyOCV(crop,item,ocrScore,textThreshold,locScore,otherMatches=
  const usable=valid.filter(r=>r.cost<=Math.max(.035,best.cost+.035)&&r.cost<=.12&&Math.max(r.missing,r.extra)<=.19);
  if(!usable.length)usable.push(best);
  const expectedGlyphs=normalizeOCR($('expectedText').value);
- const normalizedBoxes=ocvNormalizedGlyphBoxes(best,crop,$('expectedText').value);
- // Don't mix OCR-variant bounding coordinates with the image registered for OCV.
- if(normalizedBoxes.length===expectedGlyphs.length)ocrBoxes=normalizedBoxes;
- else {ocvRenderGlyphs([],cutoff);setMetric('ocvDeviationMeasured','ocvDeviationBar',NaN,'deviation');report('NEJISTÉ','Oblasti znaků nelze dostatečně spolehlivě přiřadit.');return}
- const segmented=ocvNormalizedGlyphBoxes(best,crop,$('expectedText').value.trim());
- if(segmented.length!==normalizeOCR($('expectedText').value).length){
-   ocvRenderGlyphs([],cutoff);report('NEJISTÉ','Nepodařilo se bezpečně oddělit všechny znaky; nelze jim přiřazovat poškození.');return;
- }
- ocrBoxes=segmented;
+ const segmented=ocvNormalizedGlyphBoxes(best,crop,$('expectedText').value);
+ // The segmentation returns exactly one entry per expected character, including
+ // unlocated placeholders. A failure in the second row must not hide the first row.
+ const mapped=new Map(segmented.map(g=>[g.index,g]));
+ ocrBoxes=Array.from(expectedGlyphs,(ch,index)=>{
+  const b=mapped.get(index);
+  return b&&b.ch===ch?b:{ch,index,quality:null,unlocated:true,approximate:true};
+ });
  const charSets=usable.map(r=>ocvGlyphMeasures(r,ocrBoxes,crop));
+ $('ocrProgress').textContent='Kontroluji detailní tahy použitelných referencí…';
+ await new Promise(resolve=>setTimeout(resolve,0));
+ await ocvPrepareNativeMasks(usable,crop,(index,count)=>{
+  $('ocrProgress').textContent='Detailní tahy '+index+'/'+count+' referencí…';
+ });
  const highDetailSets=usable.map(r=>ocrBoxes.map(b=>ocvHighDetailGlyph(r,b)));
  for(let i=0;i<ocrBoxes.length;i++){
   const b=ocrBoxes[i];const vals=charSets.map(chars=>chars[i]).filter(g=>g&&Number.isFinite(g.deviation)).map(g=>g.deviation).sort((a,b)=>a-b);
@@ -720,8 +899,10 @@ async function verifyOCV(crop,item,ocrScore,textThreshold,locScore,otherMatches=
  const costs=usable.map(r=>r.cost).sort((a,b)=>a-b);
  const medianCost=costs[Math.floor((costs.length-1)/2)];
  setMetric('ocvDeviationMeasured','ocvDeviationBar',medianCost*100,'deviation');
- if(measures.length!==normalizeOCR($('expectedText').value).length||measures.some(g=>g.quality===null)){
-  report('NEJISTÉ','U některých znaků chybí použitelné měření.');return;
+ if(measures.some(g=>!Number.isFinite(g.quality))){
+  lastOCVSnapshot={measures:measures.map(g=>({...g})),zone,ocrPassed:true};
+  const missing=measures.filter(g=>!Number.isFinite(g.quality)).map(g=>g.ch+' ('+(g.index+1)+')').join(', ');
+  report('NEJISTÉ','Nepodařilo se změřit: '+missing+'. Ostatní hodnoty zůstávají zobrazené.');return;
  }
  // The SAME measured glyph qualities drive the cards, colored boxes and final result.
  // The snapshot allows reclassifying already measured characters instantly when the slider moves.
@@ -772,12 +953,18 @@ async function evaluateOCR(){let worker;const epoch=frameEpoch;clearVisualResult
  finally{if(worker)await worker.terminate().catch(()=>{});busy=false;analysisDone=true}
 }
 
-const uiTranslations={"Part Detector V16": "Part Detector V23.11", "🇨🇿 Čeština": "🇨🇿 Czech", "Spustit kameru": "Start camera", "❄️ Zmrazit": "❄️ Freeze", "🔎 VYHODNOTIT": "🔎 EVALUATE", "📸 Snímek": "📸 Snapshot", "💡 Světlo": "💡 Flashlight", "Ladění": "Tuning", "🧩 Vzory": "🧩 Patterns", "🔤 Značení": "🔤 Marking", "Kotouč + 4 díry": "Disk + 4 holes", "Hledání oblasti (vzor)": "Pattern matching", "Kontrola značení (OCV)": "Marking inspection (OCV)", "Zadní kamera": "Rear camera", "Přední kamera": "Front camera", "Připraveno. Spusť kameru.": "Ready. Start the camera.", "V15 • Asistované ladění": "Assisted tuning", "① DÍL": "① PART", "② 4 DÍRY": "② 4 HOLES", "③ ATYPICKÁ": "③ DISTINCTIVE HOLE", "④ VÝSLEDEK": "④ RESULT", "čekám": "waiting", "Spusť kameru a pro snadné ladění zmraz jeden referenční díl.": "Start the camera and freeze one reference part for easier tuning.", "AUTO NASTAVIT": "AUTO-TUNE", "Min. velikost dílu (% kratší strany)": "Min. part size (% of short side)", "Max. velikost dílu (%)": "Max. part size (%)", "Citlivost obvodu dílu": "Part contour sensitivity", "Tolerance geometrie 4 děr": "Four-hole geometry tolerance", "Tolerance / min. oblouk mezikruží": "Annulus tolerance / minimum arc", "Citlivost hrany mezikruží": "Annulus edge sensitivity", "Min. převaha atypické díry": "Min. distinctive-hole margin", "Framů pro AUTO FREEZE": "Frames for AUTO FREEZE", "Tolerance směru atypické díry": "Distinctive-hole angle tolerance", "RAW kandidáti obvodu": "Raw contour candidates", "nalezené otvory": "Detected holes", "kandidáti mezikruží": "Annulus candidates", "Výchozí": "Defaults", "Zavřít": "Close", "🧩 Vzory a porovnávání": "🧩 Patterns and matching", "Minimální podobnost obrazového vzoru": "Minimum image-pattern similarity", "Práh shody": "Match threshold", "Čím vyšší práh, tím přísnější výběr. Nejde o statistickou jistotu.": "A higher threshold makes matching stricter. This is not a statistical confidence score.", "Aktivní banka vzorů": "Active pattern bank", "＋ Nová banka": "＋ New bank", "Přejmenovat": "Rename", "Název nové banky": "New bank name", "Vytvořit": "Create", "Zrušit": "Cancel", "Při hledání se používají pouze vzory z vybrané banky.": "Matching uses every pattern in the selected bank.", "＋ Přidat vzor ze snímku": "＋ Add pattern from frame", "📁 Banka fotografií ·": "📁 Photo bank ·", "vzorů": "patterns", "Načítám banku…": "Loading bank…", "Smazat všechny vzory": "Delete all patterns", "Vzory zůstávají lokálně v IndexedDB. Vyhodnocení běží pouze na tlačítko.": "Patterns are stored locally in IndexedDB. Evaluation runs only when you press EVALUATE.", "🔤 Kontrola značení (OCV)": "🔤 Marking inspection (OCV)", "Zmraz snímek, vyber banku referenčních fotografií, zadej očekávaný text a stiskni VYHODNOTIT. Výsledek se v obraze zvýrazní zeleně, žlutě nebo červeně. Rozpoznání samo neověří fyzickou neporušenost tahů.": "Freeze the frame, enter the expected text and press EVALUATE. The marking is located using the selected pattern bank and highlighted in green. OCR alone cannot verify physical stroke integrity.", "✏️ Označit oblast značení (zoom + obdélník)": "✏️ Select marking area (zoom + rectangle)", "Oblast: automaticky podle banky": "Region: automatically located using the bank", "Vzorový text": "Expected text", "Minimální textová shoda": "Minimum OCR text match", "Automaticky zkusit kontrast a jas (až 5 variant)": "Automatically try contrast and brightness (up to 5 variants)", "🔬 OCR + OCV · kontrola lokálních tahů": "🔬 OCR + OCV · local stroke inspection", "Aplikace používá všechny referenční fotografie z aktivní banky, automaticky kompenzuje natočení a porovnává text i fyzické tahy.": "Use clean reference images from the selected bank. The app locates the marking in the frozen frame, reads the text, and compares the printed strokes. No need to redraw the region.", "Prohledávaná banka vzorů": "Pattern bank to search", "Minimální kvalita znaku (OCV)": "Minimum glyph quality (OCV)", "Fyzická kontrola: NEOVĚŘENO": "Physical inspection: NOT EVALUATED", "Pokročilé ladění značení": "Advanced marking diagnostics", "Minimální jistota lokalizace": "Minimum localization confidence", "Vyšší práh omezí falešné nálezy. Nízká jistota nikdy neznamená OK.": "A higher threshold reduces false matches. Low confidence never means OK.", "Jazyk OCR": "OCR language", "Latinka / čísla (ENG)": "Latin letters / digits (ENG)", "Čeština + angličtina": "Czech + English", "OCR model se načte až při prvním vyhodnocení; vyžaduje internet.": "The OCR model is downloaded on first evaluation; an internet connection is required.", "Přečteno a rozdíly": "Recognized text and differences", "Editor vzoru": "Pattern editor", "Volný obrys": "Freehand outline", "Obdélník": "Rectangle", "Zpět": "Undo", "Zoom 1×": "Reset zoom", "Jedním prstem kresli. Dvěma prsty přibližuj a posouvej. Kresli kolem požadovaného prvku.": "Draw with one finger. Pinch to zoom and pan using two fingers. Outline the desired feature.", "Uložit vzor": "Save pattern", "Použít pro kontrolu textu": "Use for text inspection", "📌 Uložit tento výřez": "📌 Save this crop", "Sdílet / Uložit do Fotek": "Share / Save to Photos", "Otevřít obrázek": "Open image", "Na iPhonu použij „Sdílet / Uložit do Fotek“ a v systémové nabídce zvol „Uložit obrázek“.": "On iPhone, tap Share / Save to Photos, then select Save Image.", "V23.11 • 3 režimy • Kamera nic nevyhodnocuje. Zmraz snímek → stiskni VYHODNOTIT. Kotouč / Vzor / OCR. Výpočet pouze po VYHODNOTIT.": "V23.11 · 3 modes · No live analysis. Freeze a frame → press EVALUATE. Disk / Pattern / OCR. Processing runs only on EVALUATE.", "OpenCV připraveno": "OpenCV ready", "💡 Světlo OFF": "💡 Flashlight OFF", "💡 Světlo ON": "💡 Flashlight ON", "💡 Světlo N/A": "💡 Flashlight unavailable", "iOS torch nezpřístupnil": "iOS does not provide flashlight control", "V nabídce Sdílet můžeš zvolit „Uložit obrázek“ do Fotek.": "Choose Save Image from the Share menu.", "Sdílení souboru tento prohlížeč nepodporuje. Klepni na „Otevřít obrázek“ a ulož jej dlouhým stiskem.": "This browser cannot share files. Tap Open image and long-press to save it.", "Sdílení se nepodařilo. Zkus „Otevřít obrázek“.": "Sharing failed. Try Open image.", "Fyzická kontrola: nevyhodnoceno": "Physical inspection: not evaluated", "▶️ Další díl": "▶️ Next part", "Snímek zmrazen. Stiskni VYHODNOTIT.": "Frame frozen. Press EVALUATE.", "Živá kamera – bez výpočtů. Zmraz snímek.": "Live camera – no processing. Freeze a frame.", "AUTO hotovo – ověř výsledek a případně jemně dolaď": "Auto-tune complete – verify the result and adjust if needed", "✓ 1 stabilní kandidát": "✓ 1 stable candidate", "✗ žádný potvrzený díl": "✗ no confirmed part", "✓ ATYPICKÁ DÍRA OZNAČENA": "✓ DISTINCTIVE HOLE MARKED", "✗ NEJISTÉ": "✗ UNCERTAIN", "… čekám na AUTO FREEZE": "… waiting for AUTO FREEZE", "Kandidáti obvodu existují, ale neprošli geometrií 4 děr → zvyš mírně Toleranci geometrie.": "Contour candidates found, but four-hole geometry failed → slightly increase geometry tolerance.", "Nevidím kandidáta celého dílu → zkus zvýšit Citlivost obvodu nebo rozšířit rozsah velikosti dílu.": "No whole-part candidate → increase contour sensitivity or widen the part-size range.", "Příliš mnoho dílů → zpřísni velikost dílu nebo sniž Citlivost obvodu.": "Too many parts → narrow the size range or lower contour sensitivity.", "Díl mám, ale chybí otvor → zvyš Toleranci geometrie 4 děr.": "Part found, but a hole is missing → increase four-hole geometry tolerance.", "4 díry mám. Atypická není dost jednoznačná → sniž Min. převahu nebo Min. oblouk; sleduj, zda skutečná díra získává vyšší skóre.": "All four holes found, but the distinctive one is ambiguous → lower the minimum margin or arc; check its score.", "Díl + 4 díry potvrzeny → čekám na automatické zmrazení.": "Part and four holes confirmed → waiting for automatic freeze.", "✓ Kotouč i atypická díra jsou potvrzené na zmrazeném Full-HD snímku.": "✓ Disk and distinctive hole confirmed in the frozen Full-HD frame.", "Nejdřív stiskni ❄️ Zmrazit": "Press ❄️ Freeze first", "Vyhodnocování již běží": "Evaluation is already running", "Nejdřív ulož vzor oblasti v panelu Vzory": "Save a region pattern in the Patterns panel first", "OpenCV se ještě nenačetlo": "OpenCV is not loaded yet", "Vyhodnocuji jeden zmrazený snímek…": "Evaluating one frozen frame…", "Chyba analýzy: ": "Analysis error: ", "DÍL ": "PART ", "ATYPICKÁ ✓ VZOR": "DISTINCTIVE ✓ PATTERN", "ATYPICKÁ DÍRA ✓": "DISTINCTIVE HOLE ✓", "ATYPICKÁ ?": "DISTINCTIVE ?", "4 DÍRY ✓": "4 HOLES ✓", "VÝSLEDEK": "RESULT", "ANALÝZA": "ANALYSIS", "Výchozí banka": "Default bank", "Opravdu smazat všechny vzory z vybrané banky?": "Really delete all patterns from the selected bank?", "Zadej název banky": "Enter a bank name", "Banka už existuje": "Bank already exists", "Nový název banky / Rename bank": "New bank name", "Nejdřív zmraz snímek": "Freeze a frame first", "Nakresli obdélník": "Draw a rectangle", "Oblast je příliš malá": "The region is too small", "Oblast značení připravena. Stiskni VYHODNOTIT.": "Marking region ready. Press EVALUATE.", "Nejdřív nakresli oblast": "Draw a region first", "Obrys musí mít alespoň 3 body": "The outline must contain at least 3 points", "Banka je prázdná": "The bank is empty", "Bez shody": "No match", "Chyba banky vzorů: ": "Pattern bank error: ", "Knihovna OCR není dostupná": "OCR library unavailable", "Nepodařilo se stáhnout OCR knihovnu": "Failed to download the OCR library", "nedostatečný kontrast": "insufficient contrast", "odlišný poměr stran znaků": "different character aspect ratio", "málo čitelných tahů": "too few legible strokes", "NOK – rozpoznaný text neodpovídá zadání": "NOK – recognized text does not match the expected text", "NEJISTÉ – chybí referenční vzor": "UNCERTAIN – missing reference pattern", "NEJISTÉ – referenční fotografie nelze geometricky porovnat": "UNCERTAIN – reference photos cannot be aligned geometrically", "NEJISTÉ – velký rozdíl snímků; nelze rozhodnout o poškození": "UNCERTAIN – major image differences prevent reliable damage assessment", "NEJISTÉ – podezřelé souvislé poškození tahů; nutná kontrola": "UNCERTAIN – suspected contiguous stroke damage; inspection required", "NEJISTÉ – rozdíly tahů přesahují spolehlivost porovnání": "UNCERTAIN – stroke differences exceed comparison reliability", "NEJISTÉ – reference se neshodují na kvalitě tahů": "UNCERTAIN – references disagree on stroke quality", "PŘEDBĚŽNĚ OK – OCR souhlasí a porovnání nevykazuje průkaznou vadu (nevalidováno)": "PROVISIONALLY OK – OCR matches and no conclusive stroke defect detected (not validated)", "Nejdřív zadej vzorový text": "Enter the expected text first", "Aktivní banka je prázdná. V panelu Vzory přidej alespoň jednu referenční fotografii.": "The selected bank is empty. Add at least one reference image in Patterns.", "Hledám referenční značení na snímku…": "Locating reference marking in the frame…", "NEJISTÉ – referenční nápis nebyl dostatečně spolehlivě nalezen": "UNCERTAIN – marking location is not reliable enough", "Nápis nenalezen – NEJISTÉ": "Marking not found – UNCERTAIN", "(Žádný text nerozpoznán)": "(No text recognized)", "Chyba kontroly značení: ": "Marking inspection error: ", "NEJISTÉ – ": "UNCERTAIN – ", "Připraveno": "Ready", "Výsledek": "Result", "Označit oblast": "Select region", "Kotouč": "Disk", "Díry": "Holes", "Nastavení": "Settings", "Uloženo": "Saved", "Vyhodnotit": "Evaluate", "Načítám": "Loading", "Jas": "Brightness", "Kontrast": "Contrast", "Rozpoznávání": "Recognition", "Minimální podobnost": "Minimum similarity", "Otevřít": "Open", "Přidat": "Add", "Ano": "Yes", "Ne": "No", "Název vzoru": "Pattern name", "Např. KTL 1234": "e.g. KTL 1234", "Vybrat jednu fotografii": "Select one image", "🔎 Celá banka (": "🔎 Entire bank (", "Pouze: ": "Only: ", "Banka: ": "Bank: ", " · hledám ve všech ": " · searching all ", " · pouze ": " · only ", " vzorů": " patterns", "Vzor ": "Pattern ", " · lokalizace ": " · localization ", " · OCR ": " · OCR ", " · úprava ": " · preprocessing ", "Lokalizace ": "Localization ", " · globální chybějící ": " · global missing ", " · globální přebytečné ": " · global extra ", " · globální limit ": " · global limit ", "Lokální oblasti ": "Local regions ", " · nejhorší odchylka ": " · worst deviation ", " · lokální limit ": " · local limit ", "Použitý vzor: ": "Reference used: ", " · porovnáno ": " · compared ", " vzorů banky": " bank patterns", " · geometricky použitelné ": " · geometrically usable ", " · dobrá shoda ": " · good matches ", " · výrazná neshoda ": " · strong mismatches", "Chybějící ": "Missing ", "Přebytečné ": "Extra ", "Značení: ": "Marking: ", "nic": "none", "Hledám vzory v bance ": "Searching patterns in bank ", "“ vytvořena. Zmraz snímek a zvol Přidat vzor ze snímku.": "” created. Freeze a frame and select Add pattern from frame.", " uložen do banky": " saved to bank"};
+const uiTranslations={"Part Detector V16": "Part Detector V23.14", "🇨🇿 Čeština": "🇨🇿 Czech", "Spustit kameru": "Start camera", "❄️ Zmrazit": "❄️ Freeze", "🔎 VYHODNOTIT": "🔎 EVALUATE", "📸 Snímek": "📸 Snapshot", "💡 Světlo": "💡 Flashlight", "Ladění": "Tuning", "🧩 Vzory": "🧩 Patterns", "🔤 Značení": "🔤 Marking", "Kotouč + 4 díry": "Disk + 4 holes", "Hledání oblasti (vzor)": "Pattern matching", "Kontrola značení (OCV)": "Marking inspection (OCV)", "Zadní kamera": "Rear camera", "Přední kamera": "Front camera", "Připraveno. Spusť kameru.": "Ready. Start the camera.", "V15 • Asistované ladění": "Assisted tuning", "① DÍL": "① PART", "② 4 DÍRY": "② 4 HOLES", "③ ATYPICKÁ": "③ DISTINCTIVE HOLE", "④ VÝSLEDEK": "④ RESULT", "čekám": "waiting", "Spusť kameru a pro snadné ladění zmraz jeden referenční díl.": "Start the camera and freeze one reference part for easier tuning.", "AUTO NASTAVIT": "AUTO-TUNE", "Min. velikost dílu (% kratší strany)": "Min. part size (% of short side)", "Max. velikost dílu (%)": "Max. part size (%)", "Citlivost obvodu dílu": "Part contour sensitivity", "Tolerance geometrie 4 děr": "Four-hole geometry tolerance", "Tolerance / min. oblouk mezikruží": "Annulus tolerance / minimum arc", "Citlivost hrany mezikruží": "Annulus edge sensitivity", "Min. převaha atypické díry": "Min. distinctive-hole margin", "Framů pro AUTO FREEZE": "Frames for AUTO FREEZE", "Tolerance směru atypické díry": "Distinctive-hole angle tolerance", "RAW kandidáti obvodu": "Raw contour candidates", "nalezené otvory": "Detected holes", "kandidáti mezikruží": "Annulus candidates", "Výchozí": "Defaults", "Zavřít": "Close", "🧩 Vzory a porovnávání": "🧩 Patterns and matching", "Minimální podobnost obrazového vzoru": "Minimum image-pattern similarity", "Práh shody": "Match threshold", "Čím vyšší práh, tím přísnější výběr. Nejde o statistickou jistotu.": "A higher threshold makes matching stricter. This is not a statistical confidence score.", "Aktivní banka vzorů": "Active pattern bank", "＋ Nová banka": "＋ New bank", "Přejmenovat": "Rename", "Název nové banky": "New bank name", "Vytvořit": "Create", "Zrušit": "Cancel", "Při hledání se používají pouze vzory z vybrané banky.": "Matching uses every pattern in the selected bank.", "＋ Přidat vzor ze snímku": "＋ Add pattern from frame", "📁 Banka fotografií ·": "📁 Photo bank ·", "vzorů": "patterns", "Načítám banku…": "Loading bank…", "Smazat všechny vzory": "Delete all patterns", "Vzory zůstávají lokálně v IndexedDB. Vyhodnocení běží pouze na tlačítko.": "Patterns are stored locally in IndexedDB. Evaluation runs only when you press EVALUATE.", "🔤 Kontrola značení (OCV)": "🔤 Marking inspection (OCV)", "Zmraz snímek, vyber banku referenčních fotografií, zadej očekávaný text a stiskni VYHODNOTIT. Výsledek se v obraze zvýrazní zeleně, žlutě nebo červeně. Rozpoznání samo neověří fyzickou neporušenost tahů.": "Freeze the frame, enter the expected text and press EVALUATE. The marking is located using the selected pattern bank and highlighted in green. OCR alone cannot verify physical stroke integrity.", "✏️ Označit oblast značení (zoom + obdélník)": "✏️ Select marking area (zoom + rectangle)", "Oblast: automaticky podle banky": "Region: automatically located using the bank", "Vzorový text": "Expected text", "Minimální textová shoda": "Minimum OCR text match", "Automaticky zkusit kontrast a jas (až 5 variant)": "Automatically try contrast and brightness (up to 5 variants)", "🔬 OCR + OCV · kontrola lokálních tahů": "🔬 OCR + OCV · local stroke inspection", "Aplikace používá všechny referenční fotografie z aktivní banky, automaticky kompenzuje natočení a porovnává text i fyzické tahy.": "Use clean reference images from the selected bank. The app locates the marking in the frozen frame, reads the text, and compares the printed strokes. No need to redraw the region.", "Prohledávaná banka vzorů": "Pattern bank to search", "Minimální kvalita znaku (OCV)": "Minimum glyph quality (OCV)", "Fyzická kontrola: NEOVĚŘENO": "Physical inspection: NOT EVALUATED", "Pokročilé ladění značení": "Advanced marking diagnostics", "Minimální jistota lokalizace": "Minimum localization confidence", "Vyšší práh omezí falešné nálezy. Nízká jistota nikdy neznamená OK.": "A higher threshold reduces false matches. Low confidence never means OK.", "Jazyk OCR": "OCR language", "Latinka / čísla (ENG)": "Latin letters / digits (ENG)", "Čeština + angličtina": "Czech + English", "OCR model se načte až při prvním vyhodnocení; vyžaduje internet.": "The OCR model is downloaded on first evaluation; an internet connection is required.", "Přečteno a rozdíly": "Recognized text and differences", "Editor vzoru": "Pattern editor", "Volný obrys": "Freehand outline", "Obdélník": "Rectangle", "Zpět": "Undo", "Zoom 1×": "Reset zoom", "Jedním prstem kresli. Dvěma prsty přibližuj a posouvej. Kresli kolem požadovaného prvku.": "Draw with one finger. Pinch to zoom and pan using two fingers. Outline the desired feature.", "Uložit vzor": "Save pattern", "Použít pro kontrolu textu": "Use for text inspection", "📌 Uložit tento výřez": "📌 Save this crop", "Sdílet / Uložit do Fotek": "Share / Save to Photos", "Otevřít obrázek": "Open image", "Na iPhonu použij „Sdílet / Uložit do Fotek“ a v systémové nabídce zvol „Uložit obrázek“.": "On iPhone, tap Share / Save to Photos, then select Save Image.", "V23.14 • 3 režimy • Kamera nic nevyhodnocuje. Zmraz snímek → stiskni VYHODNOTIT. Kotouč / Vzor / OCR. Výpočet pouze po VYHODNOTIT.": "V23.14 · 3 modes · No live analysis. Freeze a frame → press EVALUATE. Disk / Pattern / OCR. Processing runs only on EVALUATE.", "OpenCV připraveno": "OpenCV ready", "💡 Světlo OFF": "💡 Flashlight OFF", "💡 Světlo ON": "💡 Flashlight ON", "💡 Světlo N/A": "💡 Flashlight unavailable", "iOS torch nezpřístupnil": "iOS does not provide flashlight control", "V nabídce Sdílet můžeš zvolit „Uložit obrázek“ do Fotek.": "Choose Save Image from the Share menu.", "Sdílení souboru tento prohlížeč nepodporuje. Klepni na „Otevřít obrázek“ a ulož jej dlouhým stiskem.": "This browser cannot share files. Tap Open image and long-press to save it.", "Sdílení se nepodařilo. Zkus „Otevřít obrázek“.": "Sharing failed. Try Open image.", "Fyzická kontrola: nevyhodnoceno": "Physical inspection: not evaluated", "▶️ Další díl": "▶️ Next part", "Snímek zmrazen. Stiskni VYHODNOTIT.": "Frame frozen. Press EVALUATE.", "Živá kamera – bez výpočtů. Zmraz snímek.": "Live camera – no processing. Freeze a frame.", "AUTO hotovo – ověř výsledek a případně jemně dolaď": "Auto-tune complete – verify the result and adjust if needed", "✓ 1 stabilní kandidát": "✓ 1 stable candidate", "✗ žádný potvrzený díl": "✗ no confirmed part", "✓ ATYPICKÁ DÍRA OZNAČENA": "✓ DISTINCTIVE HOLE MARKED", "✗ NEJISTÉ": "✗ UNCERTAIN", "… čekám na AUTO FREEZE": "… waiting for AUTO FREEZE", "Kandidáti obvodu existují, ale neprošli geometrií 4 děr → zvyš mírně Toleranci geometrie.": "Contour candidates found, but four-hole geometry failed → slightly increase geometry tolerance.", "Nevidím kandidáta celého dílu → zkus zvýšit Citlivost obvodu nebo rozšířit rozsah velikosti dílu.": "No whole-part candidate → increase contour sensitivity or widen the part-size range.", "Příliš mnoho dílů → zpřísni velikost dílu nebo sniž Citlivost obvodu.": "Too many parts → narrow the size range or lower contour sensitivity.", "Díl mám, ale chybí otvor → zvyš Toleranci geometrie 4 děr.": "Part found, but a hole is missing → increase four-hole geometry tolerance.", "4 díry mám. Atypická není dost jednoznačná → sniž Min. převahu nebo Min. oblouk; sleduj, zda skutečná díra získává vyšší skóre.": "All four holes found, but the distinctive one is ambiguous → lower the minimum margin or arc; check its score.", "Díl + 4 díry potvrzeny → čekám na automatické zmrazení.": "Part and four holes confirmed → waiting for automatic freeze.", "✓ Kotouč i atypická díra jsou potvrzené na zmrazeném Full-HD snímku.": "✓ Disk and distinctive hole confirmed in the frozen Full-HD frame.", "Nejdřív stiskni ❄️ Zmrazit": "Press ❄️ Freeze first", "Vyhodnocování již běží": "Evaluation is already running", "Nejdřív ulož vzor oblasti v panelu Vzory": "Save a region pattern in the Patterns panel first", "OpenCV se ještě nenačetlo": "OpenCV is not loaded yet", "Vyhodnocuji jeden zmrazený snímek…": "Evaluating one frozen frame…", "Chyba analýzy: ": "Analysis error: ", "DÍL ": "PART ", "ATYPICKÁ ✓ VZOR": "DISTINCTIVE ✓ PATTERN", "ATYPICKÁ DÍRA ✓": "DISTINCTIVE HOLE ✓", "ATYPICKÁ ?": "DISTINCTIVE ?", "4 DÍRY ✓": "4 HOLES ✓", "VÝSLEDEK": "RESULT", "ANALÝZA": "ANALYSIS", "Výchozí banka": "Default bank", "Opravdu smazat všechny vzory z vybrané banky?": "Really delete all patterns from the selected bank?", "Zadej název banky": "Enter a bank name", "Banka už existuje": "Bank already exists", "Nový název banky / Rename bank": "New bank name", "Nejdřív zmraz snímek": "Freeze a frame first", "Nakresli obdélník": "Draw a rectangle", "Oblast je příliš malá": "The region is too small", "Oblast značení připravena. Stiskni VYHODNOTIT.": "Marking region ready. Press EVALUATE.", "Nejdřív nakresli oblast": "Draw a region first", "Obrys musí mít alespoň 3 body": "The outline must contain at least 3 points", "Banka je prázdná": "The bank is empty", "Bez shody": "No match", "Chyba banky vzorů: ": "Pattern bank error: ", "Knihovna OCR není dostupná": "OCR library unavailable", "Nepodařilo se stáhnout OCR knihovnu": "Failed to download the OCR library", "nedostatečný kontrast": "insufficient contrast", "odlišný poměr stran znaků": "different character aspect ratio", "málo čitelných tahů": "too few legible strokes", "NOK – rozpoznaný text neodpovídá zadání": "NOK – recognized text does not match the expected text", "NEJISTÉ – chybí referenční vzor": "UNCERTAIN – missing reference pattern", "NEJISTÉ – referenční fotografie nelze geometricky porovnat": "UNCERTAIN – reference photos cannot be aligned geometrically", "NEJISTÉ – velký rozdíl snímků; nelze rozhodnout o poškození": "UNCERTAIN – major image differences prevent reliable damage assessment", "NEJISTÉ – podezřelé souvislé poškození tahů; nutná kontrola": "UNCERTAIN – suspected contiguous stroke damage; inspection required", "NEJISTÉ – rozdíly tahů přesahují spolehlivost porovnání": "UNCERTAIN – stroke differences exceed comparison reliability", "NEJISTÉ – reference se neshodují na kvalitě tahů": "UNCERTAIN – references disagree on stroke quality", "PŘEDBĚŽNĚ OK – OCR souhlasí a porovnání nevykazuje průkaznou vadu (nevalidováno)": "PROVISIONALLY OK – OCR matches and no conclusive stroke defect detected (not validated)", "Nejdřív zadej vzorový text": "Enter the expected text first", "Aktivní banka je prázdná. V panelu Vzory přidej alespoň jednu referenční fotografii.": "The selected bank is empty. Add at least one reference image in Patterns.", "Hledám referenční značení na snímku…": "Locating reference marking in the frame…", "NEJISTÉ – referenční nápis nebyl dostatečně spolehlivě nalezen": "UNCERTAIN – marking location is not reliable enough", "Nápis nenalezen – NEJISTÉ": "Marking not found – UNCERTAIN", "(Žádný text nerozpoznán)": "(No text recognized)", "Chyba kontroly značení: ": "Marking inspection error: ", "NEJISTÉ – ": "UNCERTAIN – ", "Připraveno": "Ready", "Výsledek": "Result", "Označit oblast": "Select region", "Kotouč": "Disk", "Díry": "Holes", "Nastavení": "Settings", "Uloženo": "Saved", "Vyhodnotit": "Evaluate", "Načítám": "Loading", "Jas": "Brightness", "Kontrast": "Contrast", "Rozpoznávání": "Recognition", "Minimální podobnost": "Minimum similarity", "Otevřít": "Open", "Přidat": "Add", "Ano": "Yes", "Ne": "No", "Název vzoru": "Pattern name", "Např. KTL 1234": "e.g. KTL 1234", "Vybrat jednu fotografii": "Select one image", "🔎 Celá banka (": "🔎 Entire bank (", "Pouze: ": "Only: ", "Banka: ": "Bank: ", " · hledám ve všech ": " · searching all ", " · pouze ": " · only ", " vzorů": " patterns", "Vzor ": "Pattern ", " · lokalizace ": " · localization ", " · OCR ": " · OCR ", " · úprava ": " · preprocessing ", "Lokalizace ": "Localization ", " · globální chybějící ": " · global missing ", " · globální přebytečné ": " · global extra ", " · globální limit ": " · global limit ", "Lokální oblasti ": "Local regions ", " · nejhorší odchylka ": " · worst deviation ", " · lokální limit ": " · local limit ", "Použitý vzor: ": "Reference used: ", " · porovnáno ": " · compared ", " vzorů banky": " bank patterns", " · geometricky použitelné ": " · geometrically usable ", " · dobrá shoda ": " · good matches ", " · výrazná neshoda ": " · strong mismatches", "Chybějící ": "Missing ", "Přebytečné ": "Extra ", "Značení: ": "Marking: ", "nic": "none", "Hledám vzory v bance ": "Searching patterns in bank ", "“ vytvořena. Zmraz snímek a zvol Přidat vzor ze snímku.": "” created. Freeze a frame and select Add pattern from frame.", " uložen do banky": " saved to bank"};
+Object.assign(uiTranslations,{'📷 Vyfotit nový vzor':'📷 Capture new pattern','🖼️ Vybrat fotografii':'🖼️ Choose photo','＋ Přidat ze zmrazeného snímku':'＋ Add from frozen frame','🧩 Přidat do banky vzorů':'🧩 Add to pattern bank','Vyfoť přímo do banky, nebo použij již zmrazený snímek. Pak označ výřez a ulož ho.':'Capture directly into the bank or use a frozen frame. Outline the region and save it.'});
 uiTranslations["NOK – podezření na fyzické poškození tahů"]="NOK – suspected physical stroke damage";
+Object.assign(uiTranslations,{
+ 'Nejdřív zadej kontrolovaný text.':'Enter the expected marking first.',
+ 'OCV vyhodnocuje jednotlivé lokalizované znaky samostatně.':'OCV evaluates each localized character separately.',
+ 'Vyhodnocení dokončeno.':'Evaluation complete.'
+});
 uiTranslations["NEJISTÉ – reference se nepodařilo spolehlivě zarovnat"]="UNCERTAIN – references could not be reliably aligned";
 uiTranslations["NEJISTÉ – dostupné reference nedávají spolehlivý výsledek"]="UNCERTAIN – references do not support a reliable decision";
 uiTranslations["PŘEDBĚŽNĚ OK – text odpovídá a poškození nebylo zjištěno (nevalidováno)"]="PROVISIONALLY OK – text matches and no damage detected (not validated)";
-Object.assign(uiTranslations,{'Shoda textu (OCR)':'Text match (OCR)','Obrazová odchylka (OCV)':'Image deviation (OCV)','Obrazová odchylka není procento fyzického poškození.':'Image deviation is not a percentage of physical damage.','Výsledek: NEOVĚŘENO':'Result: NOT EVALUATED','Podrobnosti kontroly':'Inspection details','Technická diagnostika':'Technical diagnostics','Přečtený text uvidíš po vyhodnocení.':'Recognized text appears after evaluation.','Shoda rozpoznaných znaků (ne fyzická kvalita tahů):':'Recognized character match (not physical stroke quality):','100/0 % znamená shodu jednotlivého rozpoznaného znaku s očekáváním, nikoli procento fyzického poškození. OCV se nyní počítá pro celý výřez.':'100/0 % shows whether each recognized character matches the expected one, not its physical damage. OCV is currently evaluated for the whole crop.','Vyhodnocení dokončeno.':'Evaluation completed.','Výsledek: ':'Result: ','Výsledek: NEJISTÉ':'Result: UNCERTAIN','Výsledek: NOK':'Result: NOK','Výsledek: PŘEDBĚŽNĚ OK':'Result: PROVISIONALLY OK','Přečteno: ':'Recognized: ','Kvalita jednotlivých znaků (OCV – obrazová shoda s referencí)':'Character quality (OCV – image similarity to reference)','Zobrazené hodnoty vycházejí z dostupných porovnání. Pomlčka znamená nedostatečná data; hodnoty jsou přibližné, nejde o procento fyzického poškození.':'OCV percentages measure local image similarity, not a calibrated physical-damage percentage. Approximate character boundaries come from OCR.','Jednotlivé znaky nelze z tohoto OCR snímku spolehlivě lokalizovat.':'Individual characters cannot be reliably located in this OCR image.','Na tomto snímku nelze vypočítat věrohodné lokální OCV skóre. Je potřeba kvalitnější snímek nebo přesnější lokalizace.':'Reliable per-character OCV scores cannot be calculated from this frame. A sharper image or better localization is required.'});
+Object.assign(uiTranslations,{'Shoda textu (OCR)':'Text match (OCR)','Obrazová odchylka (OCV)':'Image deviation (OCV)','Obrazová odchylka není procento fyzického poškození.':'Image deviation is not a percentage of physical damage.','Výsledek: NEOVĚŘENO':'Result: NOT EVALUATED','Podrobnosti kontroly':'Inspection details','Technická diagnostika':'Technical diagnostics','Přečtený text uvidíš po vyhodnocení.':'Recognized text appears after evaluation.','Shoda rozpoznaných znaků (ne fyzická kvalita tahů):':'Recognized character match (not physical stroke quality):','100/0 % znamená shodu jednotlivého rozpoznaného znaku s očekáváním, nikoli procento fyzického poškození. OCV vyhodnocuje jednotlivé lokalizované znaky samostatně.':'100/0 % shows whether each recognized character matches the expected one, not its physical damage. OCV evaluates each localized character separately.','Vyhodnocení dokončeno.':'Evaluation completed.','Výsledek: ':'Result: ','Výsledek: NEJISTÉ':'Result: UNCERTAIN','Výsledek: NOK':'Result: NOK','Výsledek: PŘEDBĚŽNĚ OK':'Result: PROVISIONALLY OK','Přečteno: ':'Recognized: ','Kvalita jednotlivých znaků (OCV – obrazová shoda s referencí)':'Character quality (OCV – image similarity to reference)','Zobrazené hodnoty vycházejí z dostupných porovnání. Pomlčka znamená nedostatečná data; hodnoty jsou přibližné, nejde o procento fyzického poškození.':'OCV percentages measure local image similarity, not a calibrated physical-damage percentage. Approximate character boundaries come from OCR.','Jednotlivé znaky nelze z tohoto OCR snímku spolehlivě lokalizovat.':'Individual characters cannot be reliably located in this OCR image.','Na tomto snímku nelze vypočítat věrohodné lokální OCV skóre. Je potřeba kvalitnější snímek nebo přesnější lokalizace.':'Reliable per-character OCV scores cannot be calculated from this frame. A sharper image or better localization is required.'});
 const originalText=new WeakMap();let uiLanguage=localStorage.getItem('partDetectorUILangV16')||'cs';
 const dynamicPieces=Object.entries(uiTranslations).filter(([cs,en])=>cs.length>=4).sort((a,b)=>b[0].length-a[0].length);
 function translateMessage(cs){if(uiLanguage!=='en')return cs; if(uiTranslations[cs])return uiTranslations[cs];let translated=cs;
