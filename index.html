@@ -246,17 +246,26 @@ async function verifyOCV(crop,item,ocrScore,textThreshold,locScore,otherMatches=
  if(ocrScore<textThreshold){report('NOK – rozpoznaný text neodpovídá zadání','#ff8296');return}
  if(!item){report('NEJISTÉ – chybí referenční vzor','#ffcc75');return}
  const sensitivity=Number($('ocvSensitivity').value),limit=.35-(sensitivity-1)*(.34/99);
- const all=[{item,score:locScore},...otherMatches].slice(0,4),results=[];
+ const all=[{item,score:locScore},...otherMatches],results=[];
  for(const candidate of all){try{const result=await ocvReferenceCompare(crop,candidate.item);results.push({...result,name:candidate.item.name,loc:candidate.score})}catch(e){results.push({valid:false,name:candidate.item.name,reason:e.message})}await new Promise(resolve=>setTimeout(resolve,0))}
  const valid=results.filter(r=>r.valid).sort((a,b)=>a.cost-b.cost);
  if(!valid.length){$('ocvDiagnostics').textContent=results.map(r=>r.name+': '+r.reason).join('\n');report('NEJISTÉ – referenční fotografie nelze geometricky porovnat','#ffcc75');return}
- const best=valid[0],global=Math.max(best.missing,best.extra),worst=best.local.worst;
- $('ocvDiagnostics').textContent=`Použitý vzor: ${best.name} · reference ${valid.length}/${all.length}\nChybějící ${(best.missing*100).toFixed(1)} % · přebytečné ${(best.extra*100).toFixed(1)} % · obrazová cena ${(best.cost*100).toFixed(1)} %\nLokální oblasti ${best.local.usable} · nejhorší oblast ${worst?(worst.score*100).toFixed(1):'—'} % · sousedící podezřelé oblasti ${best.clusters}\nPosun registrace ${best.dx}, ${best.dy} px · citlivost ${sensitivity} % · referenční limit ${(limit*100).toFixed(1)} %\n`+results.map(r=>r.name+': '+(r.valid?(r.cost*100).toFixed(1)+' %':'nelze porovnat ('+r.reason+')')).join(' · ');
+ // Evaluate every usable reference; do not allow a single conveniently matching sample
+ // to conceal a defect. References with poor localization are not evidence of damage.
+ const credible=valid.filter(r=>r.loc>=Number($('ocvLocate').value)/100);
+ const ordered=(credible.length?credible:valid).sort((a,b)=>a.cost-b.cost);
+ const best=ordered[0],global=Math.max(best.missing,best.extra),worst=best.local.worst;
+ const agreement=ordered.filter(r=>Math.max(r.missing,r.extra)<=.10&&r.cost<=.065).length;
+ const divergent=ordered.filter(r=>Math.max(r.missing,r.extra)>.16||r.cost>.12).length;
+ $('ocvDiagnostics').textContent=`Použitý vzor: ${best.name} · porovnáno ${all.length}/${all.length} vzorů banky · geometricky použitelné ${valid.length} · dobrá shoda ${agreement} · výrazná neshoda ${divergent}\nChybějící ${(best.missing*100).toFixed(1)} % · přebytečné ${(best.extra*100).toFixed(1)} % · obrazová cena ${(best.cost*100).toFixed(1)} %\nLokální oblasti ${best.local.usable} · nejhorší oblast ${worst?(worst.score*100).toFixed(1):'—'} % · sousedící podezřelé oblasti ${best.clusters}\nPosun registrace ${best.dx}, ${best.dy} px · citlivost ${sensitivity} % · referenční limit ${(limit*100).toFixed(1)} %\n`+results.map(r=>r.name+': '+(r.valid?(r.cost*100).toFixed(1)+' %':'nelze porovnat ('+r.reason+')')).join(' · ');
  // High global difference means comparison is unreliable, NOT proof of damaged ink.
  // Low global difference plus a cluster of local defects warrants suspicion, not automatic rejection.
  if(global>.16||best.cost>.12){report('NEJISTÉ – velký rozdíl snímků; nelze rozhodnout o poškození','#ffcc75');return}
  if(best.clusters>=2&&global>.055){report('NEJISTÉ – podezřelé souvislé poškození tahů; nutná kontrola','#ffcc75');return}
  if(best.cost>.065||global>.10){report('NEJISTÉ – rozdíly tahů přesahují spolehlivost porovnání','#ffcc75');return}
+ if(ordered.length>1&&agreement<Math.ceil(ordered.length/2)){
+  report('NEJISTÉ – reference se neshodují na kvalitě tahů','#ffcc75');return;
+ }
  report('PŘEDBĚŽNĚ OK – OCR souhlasí a porovnání nevykazuje průkaznou vadu (nevalidováno)','#8ff0b4');
 }
 
@@ -286,7 +295,7 @@ async function evaluateOCR(){let worker;const epoch=frameEpoch;clearVisualResult
  const {best,kind}=winner,score=Math.round(best.score*100),threshold=Number($('ocrThreshold').value);
  $('ocrResult').textContent=best.value||'(Žádný text nerozpoznán)';$('ocrDiff').innerHTML=ocrDiffMarkup(expected,best.value);
  $('ocrProgress').textContent=`Vzor ${item.name} · lokalizace ${(found.score*100).toFixed(1)} % · OCR ${score} % · úprava ${kind}`;
- await verifyOCV(canvas,item,score,threshold,found.score,located.filter(z=>z.item!==item&&z.score>=Number($('ocvLocate').value)/100).sort((a,b)=>b.score-a.score).slice(0,3));
+ await verifyOCV(canvas,item,score,threshold,found.score,located.filter(z=>z.item!==item&&z.score>=Number($('ocvLocate').value)/100).sort((a,b)=>b.score-a.score));
  statusEl.textContent=`Značení: ${best.value||'nic'} · OCR ${score} % · ${$('ocvVerdict').textContent.split(' – ')[0]}`;
  }catch(e){statusEl.textContent='Chyba kontroly značení: '+e.message;$('ocrProgress').textContent=e.message;$('ocvVerdict').textContent='NEJISTÉ – '+e.message}
  finally{if(worker)await worker.terminate().catch(()=>{});busy=false;analysisDone=true}
