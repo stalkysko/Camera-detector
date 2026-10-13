@@ -1,1 +1,1 @@
-const CACHE='camera-detector-v23-1';self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('camera-detector-')).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+const CACHE='camera-detector-v23-2';self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('camera-detector-')).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
